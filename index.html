@@ -3,49 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Aniversário, Meu Amor! ❤️</title>
+  <title>Feliz Aniversário!</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Georgia, serif;
       min-height: 100vh;
-      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      background: linear-gradient(135deg, #e8eef5, #f7f4ef);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 40px 20px;
-      color: #4a4a4a;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .bg-heart {
-      position: absolute;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 24px;
-      animation: floatUp 8s linear infinite;
-      user-select: none;
-      z-index: 0;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-      50% { opacity: 0.8; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+      color: #3f4852;
     }
 
     .container {
-      position: relative;
-      z-index: 1;
       max-width: 650px;
       width: 100%;
       display: flex;
@@ -55,44 +28,69 @@
 
     header {
       text-align: center;
-      color: #fff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      color: #34495e;
     }
 
-    header h1 { font-size: clamp(2rem, 6vw, 2.5rem); margin-bottom: 8px; }
+    header h1 {
+      font-size: clamp(2rem, 6vw, 2.5rem);
+      margin-bottom: 8px;
+    }
 
     .letter-card {
       background: #fff;
       border-radius: 16px;
-      padding: 40px 35px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      position: relative;
+      box-shadow: 0 12px 30px rgba(37, 52, 67, 0.1);
+      overflow: hidden;
     }
 
-    .letter-card::before {
-      content: '💌';
-      font-size: 30px;
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff;
-      padding: 0 10px;
-      border-radius: 50%;
+    .letter-toggle {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px;
+      color: #34495e;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .letter-toggle::-webkit-details-marker { display: none; }
+    .letter-toggle::marker { content: ''; }
+
+    .envelope {
+      font-size: 1.8rem;
+      transition: transform 180ms ease;
+    }
+
+    .letter-card[open] .envelope { transform: translateY(-2px); }
+
+    .toggle-hint {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: #687684;
+      margin-top: 4px;
+    }
+
+    .letter-body {
+      padding: 0 35px 35px;
+      border-top: 1px solid #e8edf1;
     }
 
     .letter-title {
-      font-size: 1.5rem;
-      color: #d64550;
+      font-size: 1.4rem;
+      color: #34495e;
       text-align: center;
-      margin-bottom: 20px;
+      margin: 24px 0 18px;
     }
 
     .letter-content {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.8;
-      color: #555;
+      color: #505b66;
       white-space: pre-line;
       text-align: justify;
     }
@@ -101,76 +99,73 @@
       margin-top: 25px;
       text-align: right;
       font-style: italic;
-      font-weight: bold;
-      color: #d64550;
+      color: #505b66;
     }
 
     .playlist-section {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 25px rgba(37, 52, 67, 0.08);
     }
 
     .playlist-title {
       font-size: 1.2rem;
-      color: #333;
+      color: #34495e;
       text-align: center;
       margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
 
     iframe { border-radius: 12px; width: 100%; border: none; }
 
     @media (max-width: 480px) {
-      .letter-card { padding: 32px 22px; }
+      .letter-toggle { padding: 20px 16px; }
+      .letter-body { padding: 0 22px 28px; }
       .letter-content { font-size: 1rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-heart" style="left: 10%; animation-delay: 0s;">💖</div>
-  <div class="bg-heart" style="left: 25%; animation-delay: 2s;">💕</div>
-  <div class="bg-heart" style="left: 60%; animation-delay: 4s;">❤️</div>
-  <div class="bg-heart" style="left: 85%; animation-delay: 1s;">✨</div>
-
   <div class="container">
     <header>
-      <h1>Feliz Aniversário! 🎉</h1>
-      <p>Um pequeno lugar na internet só para nós dois.</p>
+      <h1>Feliz Aniversário!</h1>
+      <p>Uma página feita para celebrar o seu dia.</p>
     </header>
 
-    <main class="letter-card">
-      <h2 class="letter-title">Para o Meu Amor</h2>
-      <div class="letter-content">
-Escreva aqui toda a sua carta de amor...
+    <details class="letter-card">
+      <summary class="letter-toggle">
+        <span class="envelope" aria-hidden="true">✉️</span>
+        <span>
+          Uma mensagem para você
+          <span class="toggle-hint">Clique para abrir</span>
+        </span>
+      </summary>
+      <div class="letter-body">
+        <h2 class="letter-title">Feliz aniversário!</h2>
+        <div class="letter-content">
+Escreva aqui sua mensagem de aniversário...
 
-Você pode quebrar linhas normalmente, contar como se conheceram, listar os momentos mais marcantes e dizer o quanto ela é especial para você.
-
-O espaço aceita textos longos e se adapta perfeitamente ao celular.
+Você pode contar uma lembrança legal, desejar coisas boas para o novo ciclo e dizer o que gostaria que ela soubesse — com carinho e sem pressão.
+        </div>
+        <div class="letter-signature">
+          Com carinho,<br>
+          [Seu Nome]
+        </div>
       </div>
-      <div class="letter-signature">
-        Com todo o meu amor, <br>
-        [Seu Nome] ❤️
-      </div>
-    </main>
+    </details>
 
     <section class="playlist-section">
-      <h3 class="playlist-title">🎵 Nossa Trilha Sonora</h3>
+      <h2 class="playlist-title">Nossa trilha sonora</h2>
       <iframe
         src="https://open.spotify.com/embed/playlist/3sqPzkUjPvxRmRYNW7a2Cz?utm_source=generator"
         height="352"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
-        title="Playlist Nossa Trilha Sonora no Spotify">
+        title="Playlist no Spotify">
       </iframe>
     </section>
   </div>

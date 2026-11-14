@@ -49,45 +49,107 @@
     header p, .muted { color: var(--muted); line-height: 1.7; }
     .birthday-gif {
       display: block;
-      width: min(210px, 70%);
-      max-height: 140px;
+      width: min(200px, 68%);
+      max-height: 132px;
       object-fit: contain;
-      margin: 18px auto 0;
+      margin: 20px auto 0;
       border-radius: 12px;
-      opacity: 0.92;
-      filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.32));
+      opacity: 0.9;
     }
     .panel, .playlist-section {
-      padding: 28px 26px;
+      padding: 28px;
       border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(17, 20, 26, 0.96);
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
     }
-    .panel h2, .playlist-title { margin: 0 0 14px; text-align: center; font-size: 1.5rem; }
-    .message-card { max-width: 100%; padding: 28px 36px; background: rgba(18, 20, 25, 0.96); border-radius: 22px; }
-    .message-card p {
-      margin: 0 auto;
-      max-width: 90%;
-      color: #efefe9;
-      line-height: 1.9;
-      white-space: pre-line;
+    .panel h2, .playlist-title {
+      margin: 0 0 14px;
       text-align: center;
-      font-size: clamp(0.96rem, 2vw, 1.14rem);
+      font-size: 1.45rem;
     }
-    .badge {
+    .letter-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-      padding: 7px 18px;
-      border: 1px solid var(--border);
+      padding: 12px 24px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: rgba(217, 197, 156, 0.06);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 150ms ease, background 150ms ease;
+    }
+    .letter-button:hover {
+      transform: translateY(-1px);
+      background: rgba(217, 197, 156, 0.12);
+    }
+    .letter-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+    .letter-container {
+      display: none;
+      margin-top: 20px;
+      padding: 24px 18px 18px;
+      border: 1px solid rgba(217, 197, 156, 0.32);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(242, 232, 210, 0.03), rgba(242, 232, 210, 0.01)),
+        rgba(12, 15, 19, 0.98);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 18px 32px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .letter-container::before,
+    .letter-container::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(217, 197, 156, 0.16);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .letter-container.visible {
+      display: block;
+    }
+    .message-card p {
+      margin: 0;
+      color: #d8d5cf;
+      line-height: 1.9;
+      white-space: pre-line;
+      text-align: center;
+    }
+    .badge {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 5px 13px;
+      border: 1px solid rgba(211, 192, 154, 0.35);
       border-radius: 999px;
       color: var(--accent);
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.01);
+    }
+    .hint-box {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 2px solid var(--accent);
+      border-radius: 4px 10px 10px 4px;
+      background: var(--panel-soft);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .password-form { display: grid; gap: 12px; }
+    .password-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
     }
     .button {
       display: inline-flex;
@@ -105,8 +167,11 @@
       transition: background-color 180ms ease, transform 180ms ease;
     }
     .button:hover { background: #e2d2b2; transform: translateY(-1px); }
-    .button:focus-visible, .letter summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
+    .button.secondary {
+      border-color: var(--border);
+      background: transparent;
+      color: var(--text);
+    }
     .button.secondary:hover { background: var(--panel-soft); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
     .playlist-section { padding: 22px 18px; }
@@ -120,55 +185,23 @@
     .letters-section { scroll-margin-top: 24px; }
     .letters-invite { text-align: center; }
     .letters-invite p { color: var(--muted); }
-    .intro-dialog {
-      width: min(calc(100% - 28px), 680px);
-      padding: 0;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: rgba(15, 18, 23, 0.98);
+    .letter-character {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .letter-copy {
+      margin: 0;
       color: var(--text);
-      box-shadow: 0 28px 90px rgba(0,0,0,.62);
-      overflow: hidden;
-    }
-    .intro-dialog::backdrop { background: rgba(0, 0, 0, .74); backdrop-filter: blur(4px); }
-    .intro-dialog-inner {
-      padding: 24px 22px 18px;
-    }
-    .intro-dialog-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .intro-dialog h2 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-weight: 500;
-      font-size: 1.5rem;
-    }
-    .intro-dialog .intro-text {
-      margin: 0;
-      color: #f0ece7;
-      line-height: 1.8;
+      line-height: 1.85;
       white-space: pre-line;
-      font-size: 0.98rem;
+      text-align: justify;
     }
-    .intro-dialog .button-row { margin-top: 20px; }
-    [hidden] { display: none !important; }
+    .letter-copy + .letter-copy { margin-top: 14px; }
+
     @media (max-width: 480px) {
       body { padding: 28px 12px 42px; }
       .panel, .playlist-section { padding: 20px 16px; }
-      .message-card { padding: 22px 18px; }
-      .message-card p { max-width: 100%; }
-      .letter-content { padding: 0 16px 18px; }
-      .intro-dialog-inner { padding: 18px 16px 14px; }
-      .intro-dialog h2 { font-size: 1.3rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .birthday-gif { display: none; }
-      .button { transition: none; }
+      .letter-container { padding: 18px 14px 16px; }
     }
   </style>
 </head>
@@ -184,10 +217,15 @@
         loading="lazy">
     </header>
 
-    <section class="panel message-card" aria-labelledby="greeting-title" hidden>
+    <section class="panel message-card" aria-labelledby="greeting-title">
       <span class="badge">escrevi para voce</span>
       <h2 id="greeting-title">escrevi para voce</h2>
-      <p>sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
+      <div class="button-row">
+        <button id="show-letter-button" class="letter-button" type="button">abrir carta</button>
+      </div>
+
+      <div id="message-letter" class="letter-container" aria-live="polite">
+        <p class="letter-copy">sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
 desculpa por estar fazendo isso, eu tenho um grande receio assim de acabar te estressando com isso porque nao consigo nem imaginar como voce vai reagir.
 
 eu fiz um site porque queria fazer algo pra voce, queria mostrar algumas coisas e tal, fazer algumas surpresinhas, sabe? e seu aniversario eh logo no dia do enem.... entao eu provavelmente vou te enviar e vou TENTAR dormir cedo, entao foi oq eu pensei pra poder te mandar e ir fazer a prova depois 
@@ -218,6 +256,7 @@ mas fiquei pensando que talvez nao fizesse sentido, que poderia acabar soando co
 e eu meio que fiz isso, porque mesmo que tenhamos terminados ainda tenho muito carinho e zelo por ti, voce foi e eh alguem muito importante que passou pela minha vida e eu nao vou agir como se isso nunca tivesse acontecido, pq foi algo realmente muito bom pra mim
 
 peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais uma vez, peço perdão tambem por ter sido idiota</p>
+      </div>
     </section>
 
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
@@ -234,62 +273,11 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
     <section class="panel letters-invite" aria-labelledby="letters-invite-title">
       <span class="badge">cartas</span>
       <h2 id="letters-invite-title">voce quer ler as cartas?</h2>
-      <p>se quiser, confirme para abrir as cartas.</p>
+      <p>se quiser, clique abaixo para abrir as cartas.</p>
       <div class="button-row">
-        <button class="button" id="open-confirmation" type="button">sim, quero ler</button>
+        <button class="button" id="open-letters" type="button">abrir cartas</button>
       </div>
     </section>
-
-    <dialog class="intro-dialog" id="intro-dialog" aria-labelledby="intro-title">
-      <div class="intro-dialog-inner">
-        <div class="intro-dialog-header">
-          <h2 id="intro-title">uma mensagem para você</h2>
-        </div>
-        <p class="intro-text">sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
-desculpa por estar fazendo isso, eu tenho um grande receio assim de acabar te estressando com isso porque nao consigo nem imaginar como voce vai reagir.
-
-eu fiz um site porque queria fazer algo pra voce, queria mostrar algumas coisas e tal, fazer algumas surpresinhas, sabe? e seu aniversario eh logo no dia do enem.... entao eu provavelmente vou te enviar e vou TENTAR dormir cedo, entao foi oq eu pensei pra poder te mandar e ir fazer a prova depois 
-
-MAS PODE LER TRANQUILO OK, EH SEU DIA EU NAO VOU FALAR NADA SOBRE ANTES OU NÓS TIPO OK PODE LER TA TUDO BEM
-
-primeiro eu quero te desejar um feliz aniversario, quero desejar que voce tenha uma vida prospera e que continue prosperando com seus objetivos, que voce consiga terminar seu ensino medio sem faltar taaaaaaanto assim (as vezes eu penso nisso sabia, se voce realmente ta indo). que voce tenha bons momentos com seus amigos e aproveite bastante essa fase da sua vida.
-espero tambem que voce se decida sobre a sua faculdade, vá fazer algo que voce realmente goste e que seja prospero pra ti, que voce algum dia consiga ver as meninas que são tao proximas de voce, voces tem uma amizade linda, e eu sempre vi que voce valoriza muito isso. então eu espero que voces continuem assim tao proximas pelo resto da vida e que consigam realizar seus planos juntas!
-
-espero tambem que voce supere seu medo de borboletas....... insetos........... animais com penas e tal...
-mas saiba que ainda mataria todas as borboletas do mundo ok!!!! 
-
-eu preparei algumas coisinhas, sao bobas mas fiz uma playlist com as musicas que me lembravam de voce, as vezes não necessariamente pela letra, mas pela banda, ou por ja ter escutado com voce, ou estilo de musica, ou algumas talvez pela letra, acho que voce vai identificar quais sao ...
-seria legal se voce pudesse dar uma atenção ok
-
-ta na cara que o site foi feito por ia e tals ne, nao quero dizer caramba foi eu que fiz pq nao foi.. eu pedi ajuda da estrutura mas tudo q ta escrito foi eu q te escrevi pq plmds neh
-alias, voce sabe que eu tava escrevendo enquanto a gente nao tava junto, e eu nao parei com isso, so de escrever todos os dias mas sempre que eu pensava em algo eu escrevia, talvez não aqueles textoes enormes mas oq eu tava sentindo
-eu escolhi algumas e coloquei lá, mas so algumas ta, nao vou colocar todas pq to com vergonha 
-eu nao quero deixar na tua cara porque tem a chance de voce nao querer ver, entao vou colocar no 
-final da pagina, pra voce so ver se realmente quiser, se clicar ali no botaozinho, eu quero ver!!
-
-TAMBEM QUERIA SABER SE VOCE CONSEGUIU CONVENCER SUA MAE PRA IR PRO SHOW, PERTINHO DE VOCE AI EM GOIANIA ME FALA SE SIM PORFAVOR
-
-agora vo fala algo q eu pensei ne e que pode acabar pesando um pouco...
-
-eu tinha pensado em te mandar isso um dia depois do seu aniversario, pq tava com medo de seila te mandar isso e voce se estressar e pum acabei com seu aniversario..... 
-mas fiquei pensando que talvez nao fizesse sentido, que poderia acabar soando como uma desculpa ou seila oq
-e eu meio que fiz isso, porque mesmo que tenhamos terminados ainda tenho muito carinho e zelo por ti, voce foi e eh alguem muito importante que passou pela minha vida e eu nao vou agir como se isso nunca tivesse acontecido, pq foi algo realmente muito bom pra mim
-
-peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais uma vez, peço perdão tambem por ter sido idiota</p>
-        <div class="button-row">
-          <button class="button" id="close-intro" type="button">fechar</button>
-        </div>
-      </div>
-    </dialog>
-
-    <dialog class="confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title">
-      <h2 id="confirmation-title">quer mesmo abrir as cartas?</h2>
-      <p>confirme se deseja continuar.</p>
-      <div class="button-row">
-        <button class="button secondary" id="cancel-confirmation" type="button">voltar</button>
-        <button class="button" id="confirm-open-letters" type="button">sim, abrir cartas</button>
-      </div>
-    </dialog>
 
     <section class="panel letters-section" id="letters-section" aria-labelledby="letters-title" hidden>
       <span class="badge">cartas</span>
@@ -438,9 +426,19 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       }
     ];
 
+    const showLetterButton = document.getElementById('show-letter-button');
+    const messageLetter = document.getElementById('message-letter');
+    const openLettersButton = document.getElementById('open-letters');
     const lettersSection = document.getElementById('letters-section');
-    const confirmationDialog = document.getElementById('confirmation-dialog');
-    const introDialog = document.getElementById('intro-dialog');
+
+    showLetterButton.addEventListener('click', () => {
+      messageLetter.classList.toggle('visible');
+      const isVisible = messageLetter.classList.contains('visible');
+      showLetterButton.textContent = isVisible ? 'fechar carta' : 'abrir carta';
+      if (isVisible) {
+        messageLetter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
 
     function renderLetters() {
       const list = document.getElementById('letters-list');
@@ -458,29 +456,11 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       });
     }
 
-    document.getElementById('close-intro').addEventListener('click', () => {
-      introDialog.close();
-    });
-
-    document.getElementById('open-confirmation').addEventListener('click', () => {
-      confirmationDialog.showModal();
-    });
-
-    document.getElementById('cancel-confirmation').addEventListener('click', () => {
-      confirmationDialog.close();
-      document.getElementById('open-confirmation').focus();
-    });
-
-    document.getElementById('confirm-open-letters').addEventListener('click', () => {
+    openLettersButton.addEventListener('click', () => {
       renderLetters();
       lettersSection.hidden = false;
-      confirmationDialog.close();
       lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
-    if (typeof introDialog.showModal === 'function') {
-      introDialog.showModal();
-    }
   </script>
 </body>
 </html>

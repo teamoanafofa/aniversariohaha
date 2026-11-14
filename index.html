@@ -16,38 +16,23 @@
       --text: #f0ece7;
       --muted: #c9c3bb;
       --accent: #d9c59c;
-      --error: #ff9a9e;
     }
-
     html { scroll-behavior: smooth; }
     body {
       min-height: 100vh;
       margin: 0;
       padding: 44px 18px 60px;
-      background:
-        radial-gradient(circle at top, rgba(136, 111, 77, 0.12), transparent 35%),
-        var(--page);
+      background: radial-gradient(circle at top, rgba(136, 111, 77, 0.12), transparent 35%), var(--page);
       color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
     }
-    button, input { font: inherit; }
-    .container {
-      width: min(100%, 760px);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
+    button { font: inherit; }
+    .container { width: min(100%, 760px); margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
     header { text-align: center; padding: 8px 0 0; }
-    h1, .panel h2, .playlist-title {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-weight: 500;
-      letter-spacing: 0.015em;
-    }
+    h1, .panel h2, .playlist-title { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: 0.015em; }
     h1 { margin: 0 0 10px; font-size: clamp(2.2rem, 7vw, 3.05rem); line-height: 1.1; }
-    header p, .muted { color: var(--muted); line-height: 1.7; }
-
+    header p, .muted, .music-note { color: var(--muted); line-height: 1.7; }
     .panel, .playlist-section {
       padding: 28px 26px;
       border: 1px solid var(--border);
@@ -56,94 +41,42 @@
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
     }
     .panel h2, .playlist-title { margin: 0 0 14px; text-align: center; font-size: 1.5rem; }
-
-    .message-card {
-      max-width: 100%;
-      padding: 28px 36px;
-      background: rgba(18, 20, 25, 0.96);
-      border-radius: 22px;
-    }
-    .message-card p {
-      margin: 0 auto;
-      max-width: 90%;
-      color: #efefe9;
-      line-height: 1.9;
-      white-space: pre-line;
-      text-align: center;
-      font-size: clamp(0.96rem, 2vw, 1.14rem);
-    }
-
+    .message-card { max-width: 100%; padding: 28px 36px; background: rgba(18, 20, 25, 0.96); }
     .button {
-      display: inline-flex;
-      min-height: 46px;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 18px;
-      border: 1px solid var(--accent);
-      border-radius: 10px;
-      background: var(--accent);
-      color: #191713;
-      font-weight: 650;
-      text-decoration: none;
-      cursor: pointer;
+      display: inline-flex; min-height: 46px; align-items: center; justify-content: center;
+      padding: 10px 18px; border: 1px solid var(--accent); border-radius: 10px;
+      background: var(--accent); color: #191713; font-weight: 650; cursor: pointer;
       transition: background-color 180ms ease, transform 180ms ease;
     }
     .button:hover { background: #e2d2b2; transform: translateY(-1px); }
-    .button:focus-visible, .letter-button:focus-visible, .letter summary:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
+    .button:focus-visible, .letter-button:focus-visible, .letter summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button.secondary:hover { background: var(--panel-soft); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
-
     .letter-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 10px 20px;
-      border: 1px solid rgba(217, 197, 156, 0.5);
-      border-radius: 999px;
-      background: rgba(217, 197, 156, 0.06);
-      color: var(--accent);
-      font-weight: 600;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px;
+      padding: 10px 20px; border: 1px solid rgba(217, 197, 156, 0.5); border-radius: 999px;
+      background: rgba(217, 197, 156, 0.06); color: var(--accent); font-weight: 600; cursor: pointer;
       transition: transform 180ms ease, background-color 180ms ease;
     }
     .letter-button:hover { background: rgba(217, 197, 156, 0.12); transform: translateY(-1px); }
     .letter-container {
-      display: none;
-      position: relative;
-      margin-top: 22px;
-      padding: 30px 26px;
-      border: 1px solid rgba(217, 197, 156, 0.35);
-      border-radius: 18px;
+      display: none; position: relative; margin-top: 22px; padding: 30px 26px;
+      border: 1px solid rgba(217, 197, 156, 0.35); border-radius: 18px;
       background: linear-gradient(145deg, rgba(217, 197, 156, 0.055), rgba(15, 17, 22, 0.98) 42%);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.035), 0 18px 38px rgba(0,0,0,0.24);
     }
-    .letter-container::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border: 1px solid rgba(217, 197, 156, 0.14);
-      border-radius: 11px;
-      pointer-events: none;
-    }
+    .letter-container::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(217,197,156,.14); border-radius: 11px; pointer-events: none; }
     .letter-container.visible { display: block; }
-    .letter-container p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: #e7e2d9;
-      line-height: 1.9;
-      white-space: pre-line;
-      text-align: center;
-    }
-
+    .letter-container p { position: relative; z-index: 1; margin: 0; color: #e7e2d9; line-height: 1.9; white-space: pre-line; text-align: center; }
+    .music-section { text-align: center; }
+    .music-section p { margin: 0; }
+    .music-player { width: min(100%, 560px); aspect-ratio: 16 / 9; margin: 18px auto 0; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: #111318; }
+    .music-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .music-note { max-width: 560px; margin: 12px auto 0 !important; font-size: .9rem; }
     .playlist-section { padding: 22px 18px; }
     .playlist-title { margin-bottom: 18px; }
-    iframe { display: block; width: 100%; border: 0; border-radius: 14px; }
+    .playlist-section iframe { display: block; width: 100%; border: 0; border-radius: 14px; }
     .letters-list { display: grid; gap: 12px; margin-top: 22px; }
     .letter { border: 1px solid var(--border); border-radius: 14px; background: var(--panel-soft); overflow: hidden; }
     .letter summary { padding: 15px 18px; color: var(--text); font-weight: 600; cursor: pointer; }
@@ -153,19 +86,15 @@
     .letters-invite { text-align: center; }
     .letters-invite p { color: var(--muted); }
     [hidden] { display: none !important; }
-
     @media (max-width: 480px) {
       body { padding: 28px 12px 42px; }
       .panel, .playlist-section { padding: 20px 16px; }
       .message-card { padding: 22px 18px; }
-      .message-card p { max-width: 100%; }
       .letter-container { padding: 24px 18px; }
       .letter-content { padding: 0 16px 18px; }
+      .music-player { border-radius: 10px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .button, .letter-button { transition: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button, .letter-button { transition: none; } }
   </style>
 </head>
 <body>
@@ -215,6 +144,19 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
       </div>
     </section>
 
+    <section class="panel music-section" aria-labelledby="music-title">
+      <h2 id="music-title">uma música para acompanhar sua visita</h2>
+      <p class="muted">A música não começa sozinha: toque em iniciar quando quiser ouvir.</p>
+      <div class="button-row">
+        <button class="button" id="start-background-music" type="button">iniciar música</button>
+        <button class="button secondary" id="pause-background-music" type="button">pausar para ouvir a playlist</button>
+      </div>
+      <div class="music-player">
+        <div id="youtube-player" title="música de fundo do YouTube"></div>
+      </div>
+      <p class="music-note">Use “pausar para ouvir a playlist” antes de dar play no Spotify; o site não consegue detectar quando o Spotify começa a tocar.</p>
+    </section>
+
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
       <h2 class="playlist-title" id="playlist-title">uma playlist para acompanhar o dia</h2>
       <iframe
@@ -230,9 +172,7 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
       <span class="badge">cartas</span>
       <h2 id="letters-invite-title">voce quer ler as cartas?</h2>
       <p>se quiser, clique abaixo para abrir as cartas.</p>
-      <div class="button-row">
-        <button class="button" id="open-letters" type="button">abrir cartas</button>
-      </div>
+      <div class="button-row"><button class="button" id="open-letters" type="button">abrir cartas</button></div>
     </section>
 
     <section class="panel letters-section" id="letters-section" aria-labelledby="letters-title" hidden>
@@ -245,9 +185,7 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
 
   <script>
     const letters = [
-      {
-        title: '12 de novembro',
-        content: `Tenho pensado muito em você, no seu aniversário, em coisas que eu poderia te falar
+      { title: '12 de novembro', content: `Tenho pensado muito em você, no seu aniversário, em coisas que eu poderia te falar
 se eu realmente poderia ter falar algo
 tem um tempinho que eu não escrevo, por não saber mais organizar meus pensamentos de maneira que não sejam tão confusos
 eu ainda gosto muito de voce ainda penso muito em você, n tem um dia se quer que não penso em ti e na possibilidade de te ter comigo
@@ -262,11 +200,8 @@ mas no seu aniversário, não pretendo fazer nada extravagante, alguns textos co
 
 o dia é seu, todinho seu, e não quero estragar, e perdão se eu vou ser egoista mas sei lá, n consigo esquecer do seu dia e nem deixar ele passar sem ao menos te dar um pequeno oi
 
-então já adianto meu pedido de desculpas ok!!! n sei se você vai ver isso mas ok.`
-      },
-      {
-        title: '27 de outubro',
-        content: `Hm
+então já adianto meu pedido de desculpas ok!!! n sei se você vai ver isso mas ok.` },
+      { title: '27 de outubro', content: `Hm
 
 hoje passei maior calor meu jesus
 será q ai tb ta mt quente?
@@ -280,11 +215,8 @@ quando eu li algumas historinhas pra você dormir, eu não sei se realmente gost
 lembro de estarmos conversando e você apertou o celular contra a bochecha, n sei exatamente o que aconteceu mas a sua voz, sua maneira de falar ficou muito fofa
 me deixou bem alegre no momento eu gostava dos nossos momentos assim, quando eu sentia que vc se sentia confortável cmg, quando vc era bobinha comigo e outras coisinhas que enchem meu peito de alegria so de lembrar
 
-nao sei como posso termina esse texto eu sinto falta de vc ana beatriz bls sinto bastante ta vai acabar assim .`
-      },
-      {
-        title: '17 de outubro',
-        content: `de inicio, eu percebi que eu tinha dito pra mim mesmo que não iria mais escrever ou coisas assim, pq meio q eu fazia isso na intenção de que ela pudesse ver algum dia, e eu meio q to caindo um pouco nessa realidade, em q talvez já tenha ido mesmo e não há nada q eu possa fazer
+nao sei como posso termina esse texto eu sinto falta de vc ana beatriz bls sinto bastante ta vai acabar assim .` },
+      { title: '17 de outubro', content: `de inicio, eu percebi que eu tinha dito pra mim mesmo que não iria mais escrever ou coisas assim, pq meio q eu fazia isso na intenção de que ela pudesse ver algum dia, e eu meio q to caindo um pouco nessa realidade, em q talvez já tenha ido mesmo e não há nada q eu possa fazer
 mas eu ainda queria que ela pudesse ler meus textos e que eu pudesse escrever novos
 
 eu sinto uma falta bizarra dela, sinto mesmo e n tem um dia sequer que não paro de pensar nela, no jeitinho dela, da maneira em que ela ficava estressada c minhas bobeiras, as vezes em que eu fazia isso de propósito c brincadeiras sem graça, os apelidos que eu dava e que eu recebi dela
@@ -338,11 +270,8 @@ eu queria muito que você mudasse de ideia, queria estar contigo uma vez e mostr
 eu comecei o texto falando “ela” pq seila, n queria que fosse taaao focado nisso sabe talvez só um tico da minha saudade e tal
 mas acabou virando tudo sobre vc e nos
 mas a verdade eh que eu amo a Ana Beatriz e ela me mataria se soubesse a hora q to indo dormir
-mas eu te amo ana eu te amo mesmo e sinto sua falta`
-      },
-      {
-        title: '9 de outubro',
-        content: `Eh 11 hora do dia ainda e eu ja to morreno de saudade kkkkkkk
+mas eu te amo ana eu te amo mesmo e sinto sua falta` },
+      { title: '9 de outubro', content: `Eh 11 hora do dia ainda e eu ja to morreno de saudade kkkkkkk
 
 fiz uma prova agora pela manhã, era pelo pc então era mais flexível e colocaram musicas, e era sertanejo, lembrei de você porra cu diabo inferno saudade do capeta
 
@@ -358,11 +287,8 @@ sertanejo por algum motivo me lembra churrasco, acabo pensando a gente em um chu
 eu te a mo
 
 ai agora depôs de escreve to ouvindo marília mendicância oq falta em vc sou eu kkkk eu quero pensar assim meu deus sente saudades de mim pfv eu sinto muita que vontade imensa de falar com vc
-eu quero falar c vc agora mas tb nao quero incomodar mas eu etenho medo de vc ainda sentir algo e falar com você so no seu aniversário, quando vc tiver desistido de mim`
-      },
-      {
-        title: '8 de outubro',
-        content: `hoje, desde que terminamos fui p aula pela primeira vez tive algumas coisas que não podia perder, e por mais que a gente não conversasse tanto durante a tarde, pq as vezes vc tb tava em aula, foi estranho porque eu não podia ficar esperando você aparecer, pela sua mensagem, por você dizendo que já havia chegado, não pude falar que já estava so esperando o ônibus, e sei lá tudo isso eh mt estranho e ainda to tentando lidar com isso
+eu quero falar c vc agora mas tb nao quero incomodar mas eu etenho medo de vc ainda sentir algo e falar com você so no seu aniversário, quando vc tiver desistido de mim` },
+      { title: '8 de outubro', content: `hoje, desde que terminamos fui p aula pela primeira vez tive algumas coisas que não podia perder, e por mais que a gente não conversasse tanto durante a tarde, pq as vezes vc tb tava em aula, foi estranho porque eu não podia ficar esperando você aparecer, pela sua mensagem, por você dizendo que já havia chegado, não pude falar que já estava so esperando o ônibus, e sei lá tudo isso eh mt estranho e ainda to tentando lidar com isso
 
 além disso, meus amigos comentaram sobre eu estar cabisbaixo, embora eu ainda tenha achado que eu tava aparentando estar bem, mas aparentemente era so engano meu e talvez isso esteja um pouco na cara
 
@@ -372,29 +298,24 @@ me fez lembrar que antes de vc me bloquear, eu ia pedir pra você falar comigo c
 
 outra coisa que notei, eh que eu já escrevo tem 3 dias KKKKKKK parece ki eu so aquele cara do diário de uma paixão, (talvez eu pare um pouco) mas… queria ser mesmo bls porque no final os dois morrem juntos e seila quero te esperar, e quer ter esperanças em te ter mais uma vez, e ainda tenho, mas as vezes tento ser lúcido e imagino que é bem difícil isso acontecer, mas eu ainda n consigo desistir dessa ideia
 
-eu ainda amo muito você, e sinto a sua falta`
-      },
-      {
-        title: '6 de outubro',
-        content: `eu não sei mt bem por onde começar, realmente nunca tive esse hábito de escrever para mim mesmo, a não ser os pequenos textos que fiz pra ti, mas me vejo perdido, sem saber oq fazer, sem saber oq seguir, e pior sem ter ninguém pra compartilhar minhas angústias e pedir por um abraço
+eu ainda amo muito você, e sinto a sua falta` },
+      { title: '6 de outubro', content: `eu não sei mt bem por onde começar, realmente nunca tive esse hábito de escrever para mim mesmo, a não ser os pequenos textos que fiz pra ti, mas me vejo perdido, sem saber oq fazer, sem saber oq seguir, e pior sem ter ninguém pra compartilhar minhas angústias e pedir por um abraço
 
-sei que em um dia normal você se estressaria comigo, por causa do horário, coisas que eu deveria estar evitando, já q eu arrumei meu sono há pouquíssimo tempo, mas sendo bem honesto, o que eu posso fazer? porque eu deveria continuar com meu sono certo? minha única motivação era fazer isso por você, pra te manter segura e me tornar alguém mais digno de te ter ao lado, mas e agora? agora que eu não tenho você mais, agora que eu não sei mais pra onde ir ou o que fazer? eu estou sem norte, e tudo que eu queria era você como minha bússola, parece vergonhoso falar coisas como essa, mas pra falar bem a verdade, é a única coisa que eu consigo pensar pra tentar explicar oq sinto, me sinto perdido, sem motivações, e a única coisa que eu tenho certeza é que eu sinto falta de você`
-      }
+sei que em um dia normal você se estressaria comigo, por causa do horário, coisas que eu deveria estar evitando, já q eu arrumei meu sono há pouquíssimo tempo, mas sendo bem honesto, o que eu posso fazer? porque eu deveria continuar com meu sono certo? minha única motivação era fazer isso por você, pra te manter segura e me tornar alguém mais digno de te ter ao lado, mas e agora? agora que eu não tenho você mais, agora que eu não sei mais pra onde ir ou o que fazer? eu estou sem norte, e tudo que eu queria era você como minha bússola, parece vergonhoso falar coisas como essa, mas pra falar bem a verdade, é a única coisa que eu consigo pensar pra tentar explicar oq sinto, me sinto perdido, sem motivações, e a única coisa que eu tenho certeza é que eu sinto falta de você` }
     ];
 
     const messageLetter = document.getElementById('message-letter');
     const showLetterButton = document.getElementById('show-letter-button');
     const lettersSection = document.getElementById('letters-section');
+    let youtubePlayer;
 
     showLetterButton.addEventListener('click', () => {
-      const opening = !messageLetter.classList.contains('visible');
-      messageLetter.classList.toggle('visible', opening);
+      const opening = messageLetter.hidden;
       messageLetter.hidden = !opening;
+      messageLetter.classList.toggle('visible', opening);
       showLetterButton.textContent = opening ? 'fechar carta' : 'abrir carta';
       showLetterButton.setAttribute('aria-expanded', String(opening));
-      if (opening) {
-        messageLetter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      if (opening) messageLetter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
     function renderLetters() {
@@ -418,6 +339,29 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       lettersSection.hidden = false;
       lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    document.getElementById('start-background-music').addEventListener('click', () => {
+      if (youtubePlayer && typeof youtubePlayer.playVideo === 'function') youtubePlayer.playVideo();
+    });
+    document.getElementById('pause-background-music').addEventListener('click', () => {
+      if (youtubePlayer && typeof youtubePlayer.pauseVideo === 'function') youtubePlayer.pauseVideo();
+    });
+
+    const youtubeApiScript = document.createElement('script');
+    youtubeApiScript.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(youtubeApiScript);
+
+    window.onYouTubeIframeAPIReady = function () {
+      youtubePlayer = new YT.Player('youtube-player', {
+        videoId: 'mR09iOeyBro',
+        playerVars: { playsinline: 1, rel: 0, origin: window.location.origin },
+        events: {
+          onReady: function () {
+            youtubePlayer.setVolume(35);
+          }
+        }
+      });
+    };
   </script>
 </body>
 </html>

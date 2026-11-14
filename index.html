@@ -40,12 +40,7 @@
     }
 
     header { text-align: center; }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 6vw, 2.6rem);
-    }
-
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 6vw, 2.6rem); }
     header p, .muted { color: var(--muted); line-height: 1.6; }
 
     .birthday-gif {
@@ -119,13 +114,7 @@
     }
 
     .option-text { font-weight: 600; }
-
-    .message {
-      min-height: 1.5em;
-      margin: 14px 0 0;
-      color: var(--error);
-      text-align: center;
-    }
+    .message { min-height: 1.5em; margin: 14px 0 0; color: var(--error); text-align: center; }
 
     .hint-box {
       margin: 18px 0;
@@ -138,7 +127,6 @@
     }
 
     .password-form { display: grid; gap: 12px; }
-
     .password-input {
       width: 100%;
       padding: 13px 14px;
@@ -164,41 +152,16 @@
       cursor: pointer;
     }
 
-    .button.secondary {
-      border-color: var(--border);
-      background: transparent;
-      color: var(--text);
-    }
-
+    .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
-
     .letters-list { display: grid; gap: 10px; margin-top: 18px; }
-
-    .letter {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--panel-soft);
-    }
-
-    .letter summary {
-      padding: 14px 16px;
-      color: var(--text);
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .letter-content {
-      padding: 0 16px 16px;
-      color: #d1d5dd;
-      font-family: Georgia, serif;
-      line-height: 1.8;
-      white-space: pre-line;
-    }
+    .letter { border: 1px solid var(--border); border-radius: 12px; background: var(--panel-soft); }
+    .letter summary { padding: 14px 16px; color: var(--text); font-weight: 600; cursor: pointer; }
+    .letter-content { padding: 0 16px 16px; color: #d1d5dd; font-family: Georgia, serif; line-height: 1.8; white-space: pre-line; }
 
     .playlist-section { padding: 20px; }
     .playlist-title { margin-bottom: 14px; }
     iframe { display: block; width: 100%; border: 0; border-radius: 12px; }
-
     [hidden] { display: none !important; }
 
     @media (max-width: 480px) {
@@ -248,7 +211,7 @@
       <span class="badge">Acesso opcional às cartas</span>
       <h2>Quer continuar?</h2>
       <p class="muted">Só avance se realmente quiser ler as mensagens. Não há problema nenhum em parar por aqui.</p>
-      <div class="hint-box"><strong>Dica:</strong> <span id="hint-text">A senha que você combinar ou compartilhar com ela.</span></div>
+      <div class="hint-box"><strong>Dica:</strong> <span id="hint-text"></span></div>
       <form class="password-form" id="password-form">
         <label for="password-input">Digite a senha para abrir as cartas</label>
         <input class="password-input" id="password-input" type="password" placeholder="Senha" autocomplete="off" required>
@@ -283,46 +246,56 @@
   </main>
 
   <script>
-    // Personalize a senha e a dica. Em um site estático, a senha fica visível
-    // no código-fonte e não é proteção real; o fluxo serve como convite opcional.
     const SECRET_PASSWORD = 'quero ler';
     const PASSWORD_HINT = 'Uma senha que você compartilhou com ela.';
 
-    // Cada pergunta precisa de quatro opções. Troque os textos, URLs de imagens
-    // e correctIndex (0 a 3) para personalizar o quiz.
+    // Pergunta 1 usa uma legenda que inclui aves, insetos e outros bichinhos.
     const quizData = [
       {
-        question: 'Qual destes animais você prefere?',
+        question: 'Qual destes bichinhos você escolheria?',
         options: [
-          { text: 'Cachorro', image: 'https://media.giphy.com/media/mCRJdoOOeom4/giphy.gif' },
-          { text: 'Gato', image: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif' },
-          { text: 'Panda', image: 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif' },
-          { text: 'Ursinho', image: 'https://media.giphy.com/media/l2R013mIf1ZXdvoyI/giphy.gif' }
+          { text: 'Coelhos', image: 'https://media.giphy.com/media/mCRJdoOOeom4/giphy.gif' },
+          { text: 'Pombos', image: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif' },
+          { text: 'Borboletas', image: 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif' },
+          { text: 'Joaninhas', image: 'https://media.giphy.com/media/l2R013mIf1ZXdvoyI/giphy.gif' }
         ],
-        correctIndex: 1
+        correctIndex: 0
       },
       {
-        question: 'Qual destas opções combina mais com você?',
+        question: 'Pergunta 2',
         options: [
-          { text: 'Calma', image: 'https://media.giphy.com/media/ND6xkVPaj8tHO/giphy.gif' },
-          { text: 'Dramática', image: 'https://media.giphy.com/media/E2d2gOO5vBR60/giphy.gif' },
-          { text: 'Brava, mas fofa', image: 'https://media.giphy.com/media/13AXYJhWNzs50k/giphy.gif' },
-          { text: 'Dorminhoca', image: 'https://media.giphy.com/media/d5mI2TFqNBCCZ0TFSi/giphy.gif' }
+          { text: 'Opção 1', image: 'https://media.giphy.com/media/ND6xkVPaj8tHO/giphy.gif' },
+          { text: 'Opção 2', image: 'https://media.giphy.com/media/E2d2gOO5vBR60/giphy.gif' },
+          { text: 'Opção 3', image: 'https://media.giphy.com/media/13AXYJhWNzs50k/giphy.gif' },
+          { text: 'Opção 4', image: 'https://media.giphy.com/media/d5mI2TFqNBCCZ0TFSi/giphy.gif' }
         ],
-        correctIndex: 2
+        correctIndex: 0
+      },
+      {
+        question: 'Pergunta 3',
+        options: [
+          { text: 'Opção 1', image: 'https://media.giphy.com/media/mCRJdoOOeom4/giphy.gif' },
+          { text: 'Opção 2', image: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif' },
+          { text: 'Opção 3', image: 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif' },
+          { text: 'Opção 4', image: 'https://media.giphy.com/media/l2R013mIf1ZXdvoyI/giphy.gif' }
+        ],
+        correctIndex: 0
+      },
+      {
+        question: 'Pergunta 4',
+        options: [
+          { text: 'Opção 1', image: 'https://media.giphy.com/media/ND6xkVPaj8tHO/giphy.gif' },
+          { text: 'Opção 2', image: 'https://media.giphy.com/media/E2d2gOO5vBR60/giphy.gif' },
+          { text: 'Opção 3', image: 'https://media.giphy.com/media/13AXYJhWNzs50k/giphy.gif' },
+          { text: 'Opção 4', image: 'https://media.giphy.com/media/d5mI2TFqNBCCZ0TFSi/giphy.gif' }
+        ],
+        correctIndex: 0
       }
     ];
 
-    // Coloque aqui as cartas que você já escreveu. Você pode adicionar ou remover objetos.
     const letters = [
-      {
-        title: 'Carta 1 — [título ou data]',
-        content: 'Cole aqui a primeira carta.\n\nAs quebras de linha serão mantidas.'
-      },
-      {
-        title: 'Carta 2 — [título ou data]',
-        content: 'Cole aqui outra carta, ou remova este item se não precisar dele.'
-      }
+      { title: 'Carta 1 — [título ou data]', content: 'Cole aqui a primeira carta.\n\nAs quebras de linha serão mantidas.' },
+      { title: 'Carta 2 — [título ou data]', content: 'Cole aqui outra carta, ou remova este item se não precisar dele.' }
     ];
 
     const screens = ['welcome-screen', 'quiz-screen', 'password-screen', 'letters-screen'];
@@ -388,7 +361,6 @@
     function renderLetters() {
       const list = document.getElementById('letters-list');
       list.replaceChildren();
-
       letters.forEach((letter) => {
         const details = document.createElement('details');
         details.className = 'letter';
@@ -416,7 +388,6 @@
       event.preventDefault();
       const entered = document.getElementById('password-input').value.trim().toLocaleLowerCase('pt-BR');
       const expected = SECRET_PASSWORD.trim().toLocaleLowerCase('pt-BR');
-
       if (entered === expected) {
         renderLetters();
         showScreen('letters-screen');

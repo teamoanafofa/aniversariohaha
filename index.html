@@ -76,7 +76,7 @@
     .music-note { max-width: 560px; margin: 12px auto 0 !important; font-size: .9rem; }
     .playlist-section { padding: 22px 18px; }
     .playlist-title { margin-bottom: 18px; }
-    .playlist-section iframe { display: block; width: 100%; border: 0; border-radius: 14px; }
+    .spotify-player { display: block; width: 100%; height: 600px; border: 0; border-radius: 14px; }
     .letters-list { display: grid; gap: 12px; margin-top: 22px; }
     .letter { border: 1px solid var(--border); border-radius: 14px; background: var(--panel-soft); overflow: hidden; }
     .letter summary { padding: 15px 18px; color: var(--text); font-weight: 600; cursor: pointer; }
@@ -93,6 +93,7 @@
       .letter-container { padding: 24px 18px; }
       .letter-content { padding: 0 16px 18px; }
       .music-player { border-radius: 10px; }
+      .spotify-player { height: 600px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button, .letter-button { transition: none; } }
   </style>
@@ -160,8 +161,8 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
       <h2 class="playlist-title" id="playlist-title">pensei em ti quando ouvi:</h2>
       <iframe
-        src="https://open.spotify.com/embed/playlist/0Nht3YpRNmmUic8BIVtYwA?utm_source=generator"
-        height="352"
+        class="spotify-player"
+        src="https://open.spotify.com/embed/playlist/3sqPzkUjPvxRmRYNW7a2Cz?utm_source=generator"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
         title="playlist no spotify">

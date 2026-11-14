@@ -246,10 +246,10 @@
   </main>
 
   <script>
-    const SECRET_PASSWORD = 'quero ler';
-    const PASSWORD_HINT = 'Uma senha que você compartilhou com ela.';
+    // Em um site estático, a senha fica visível no código-fonte e não é proteção real.
+    const SECRET_PASSWORD = '123';
+    const PASSWORD_HINT = 'A senha combinada para abrir as mensagens.';
 
-    // Pergunta 1 usa uma legenda que inclui aves, insetos e outros bichinhos.
     const quizData = [
       {
         question: 'Qual destes bichinhos você escolheria?',
@@ -293,9 +293,13 @@
       }
     ];
 
+    // Cada item é uma carta independente: clique no título para abrir só aquela carta.
     const letters = [
-      { title: 'Carta 1 — [título ou data]', content: 'Cole aqui a primeira carta.\n\nAs quebras de linha serão mantidas.' },
-      { title: 'Carta 2 — [título ou data]', content: 'Cole aqui outra carta, ou remova este item se não precisar dele.' }
+      { title: 'Carta 1', content: '12312423' },
+      { title: 'Carta 2', content: '124235' },
+      { title: 'Carta 3', content: '2343' },
+      { title: 'Carta 4', content: '2353452' },
+      { title: 'Carta 5', content: '23890523478572384' }
     ];
 
     const screens = ['welcome-screen', 'quiz-screen', 'password-screen', 'letters-screen'];
@@ -361,6 +365,7 @@
     function renderLetters() {
       const list = document.getElementById('letters-list');
       list.replaceChildren();
+
       letters.forEach((letter) => {
         const details = document.createElement('details');
         details.className = 'letter';
@@ -386,9 +391,8 @@
 
     document.getElementById('password-form').addEventListener('submit', (event) => {
       event.preventDefault();
-      const entered = document.getElementById('password-input').value.trim().toLocaleLowerCase('pt-BR');
-      const expected = SECRET_PASSWORD.trim().toLocaleLowerCase('pt-BR');
-      if (entered === expected) {
+      const entered = document.getElementById('password-input').value.trim();
+      if (entered === SECRET_PASSWORD) {
         renderLetters();
         showScreen('letters-screen');
       } else {

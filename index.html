@@ -7,7 +7,6 @@
   <title>Uma lembrança de aniversário</title>
   <style>
     * { box-sizing: border-box; }
-
     :root {
       color-scheme: dark;
       --page: #08090d;
@@ -19,9 +18,7 @@
       --accent: #a9bfd8;
       --error: #ff9a9e;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       min-height: 100vh;
       margin: 0;
@@ -30,9 +27,7 @@
       color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     button, input { font: inherit; }
-
     .container {
       width: min(100%, 680px);
       margin: 0 auto;
@@ -40,11 +35,9 @@
       flex-direction: column;
       gap: 22px;
     }
-
     header { text-align: center; }
     h1 { margin: 0 0 8px; font-size: clamp(2rem, 6vw, 2.6rem); }
     header p, .muted { color: var(--muted); line-height: 1.6; }
-
     .birthday-gif {
       display: block;
       width: min(220px, 70%);
@@ -53,7 +46,6 @@
       margin: 18px auto 0;
       border-radius: 12px;
     }
-
     .panel, .playlist-section {
       padding: 24px;
       border: 1px solid var(--border);
@@ -61,15 +53,12 @@
       background: var(--panel);
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
     }
-
     .panel h2, .playlist-title {
       margin: 0 0 14px;
       text-align: center;
       font-size: 1.35rem;
     }
-
     .message-card p { color: #d1d5dd; line-height: 1.8; white-space: pre-line; }
-
     .badge {
       display: block;
       width: fit-content;
@@ -80,7 +69,6 @@
       color: #dce5ef;
       font-size: 0.88rem;
     }
-
     .hint-box {
       margin: 18px 0;
       padding: 14px;
@@ -90,7 +78,6 @@
       color: var(--muted);
       line-height: 1.6;
     }
-
     .password-form { display: grid; gap: 12px; }
     .password-input {
       width: 100%;
@@ -101,7 +88,6 @@
       color: var(--text);
       text-align: center;
     }
-
     .button {
       display: inline-flex;
       min-height: 44px;
@@ -116,15 +102,12 @@
       text-decoration: none;
       cursor: pointer;
     }
-
     .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
     .message { min-height: 1.5em; margin: 14px 0 0; color: var(--error); text-align: center; }
-
     .playlist-section { padding: 20px; }
     .playlist-title { margin-bottom: 14px; }
     iframe { display: block; width: 100%; border: 0; border-radius: 12px; }
-
     .scroll-cue {
       display: flex;
       width: 100%;
@@ -145,37 +128,28 @@
       text-decoration: none;
       transition: background-color 180ms ease, transform 180ms ease;
     }
-
-    .scroll-cue:hover, .scroll-cue:focus-visible {
-      background: #252a34;
-      transform: translateY(-2px);
-    }
-
+    .scroll-cue:hover, .scroll-cue:focus-visible { background: #252a34; transform: translateY(-2px); }
     .scroll-cue .arrow {
       color: var(--accent);
       font-size: 2rem;
       line-height: 1;
       animation: point-down 1.2s ease-in-out infinite;
     }
-
     @keyframes point-down {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(6px); }
     }
-
     .password-section { scroll-margin-top: 24px; }
     .letters-list { display: grid; gap: 10px; margin-top: 18px; }
     .letter { border: 1px solid var(--border); border-radius: 12px; background: var(--panel-soft); }
     .letter summary { padding: 14px 16px; color: var(--text); font-weight: 600; cursor: pointer; }
     .letter-content { padding: 0 16px 16px; color: #d1d5dd; font-family: Georgia, serif; line-height: 1.8; white-space: pre-line; }
     [hidden] { display: none !important; }
-
     @media (max-width: 480px) {
       body { padding: 24px 12px 40px; }
       .panel { padding: 20px 16px; }
       .scroll-cue { min-height: 82px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .birthday-gif { display: none; }
@@ -206,7 +180,7 @@ Aproveite muito o seu dia! 🎉</p>
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
       <h2 class="playlist-title" id="playlist-title">Uma playlist para acompanhar o dia</h2>
       <iframe
-        src="https://open.spotify.com/embed/playlist/3sqPzkUjPvxRmRYNW7a2Cz?utm_source=generator"
+        src="https://open.spotify.com/embed/playlist/0Nht3YpRNmmUic8BIVtYwA?utm_source=generator"
         height="352"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
@@ -215,7 +189,7 @@ Aproveite muito o seu dia! 🎉</p>
     </section>
 
     <a class="scroll-cue" href="#password-section" aria-label="Descer até a seção opcional das cartas">
-      <span>Continue descendo se quiser ver</span>
+      <span>Fiz algo pra você, continue descendo se quiser ver</span>
       <span class="arrow" aria-hidden="true">↓</span>
     </a>
 
@@ -245,7 +219,6 @@ Aproveite muito o seu dia! 🎉</p>
 
   <script>
     const SECRET_PASSWORD = '123';
-
     const letters = [
       { title: 'Carta 1', content: '12312423' },
       { title: 'Carta 2', content: '124235' },
@@ -262,7 +235,6 @@ Aproveite muito o seu dia! 🎉</p>
     function renderLetters() {
       const list = document.getElementById('letters-list');
       list.replaceChildren();
-
       letters.forEach((letter) => {
         const details = document.createElement('details');
         details.className = 'letter';

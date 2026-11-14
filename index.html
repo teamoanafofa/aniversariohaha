@@ -126,19 +126,41 @@
     iframe { display: block; width: 100%; border: 0; border-radius: 12px; }
 
     .scroll-cue {
-      display: grid;
-      justify-items: center;
-      gap: 6px;
-      padding: 2px 0;
-      color: var(--muted);
+      display: flex;
+      width: 100%;
+      min-height: 88px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      background: var(--panel-soft);
+      box-shadow: 0 0 22px rgba(169, 191, 216, 0.16);
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
       text-align: center;
       text-decoration: none;
+      transition: background-color 180ms ease, transform 180ms ease;
+    }
+
+    .scroll-cue:hover, .scroll-cue:focus-visible {
+      background: #252a34;
+      transform: translateY(-2px);
     }
 
     .scroll-cue .arrow {
       color: var(--accent);
-      font-size: 1.8rem;
+      font-size: 2rem;
       line-height: 1;
+      animation: point-down 1.2s ease-in-out infinite;
+    }
+
+    @keyframes point-down {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
     }
 
     .password-section { scroll-margin-top: 24px; }
@@ -151,11 +173,13 @@
     @media (max-width: 480px) {
       body { padding: 24px 12px 40px; }
       .panel { padding: 20px 16px; }
+      .scroll-cue { min-height: 82px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .birthday-gif { display: none; }
+      .scroll-cue, .scroll-cue .arrow { animation: none; transition: none; }
     }
   </style>
 </head>
@@ -191,7 +215,7 @@ Aproveite muito o seu dia! 🎉</p>
     </section>
 
     <a class="scroll-cue" href="#password-section" aria-label="Descer até a seção opcional das cartas">
-      <span>Se quiser, continue descendo</span>
+      <span>Quer ver as mensagens? Desça a página</span>
       <span class="arrow" aria-hidden="true">↓</span>
     </a>
 

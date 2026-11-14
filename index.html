@@ -120,18 +120,41 @@
     .letters-section { scroll-margin-top: 24px; }
     .letters-invite { text-align: center; }
     .letters-invite p { color: var(--muted); }
-    .confirmation-dialog {
-      width: min( calc(100% - 32px), 440px);
-      padding: 26px;
+    .intro-dialog {
+      width: min(calc(100% - 28px), 680px);
+      padding: 0;
       border: 1px solid var(--border);
-      border-radius: 18px;
-      background: #171a20;
+      border-radius: 20px;
+      background: rgba(15, 18, 23, 0.98);
       color: var(--text);
-      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+      box-shadow: 0 28px 90px rgba(0,0,0,.62);
+      overflow: hidden;
     }
-    .confirmation-dialog::backdrop { background: rgba(0, 0, 0, .72); backdrop-filter: blur(3px); }
-    .confirmation-dialog h2 { margin: 0 0 10px; font-family: Georgia, serif; font-weight: 500; }
-    .confirmation-dialog p { color: var(--muted); }
+    .intro-dialog::backdrop { background: rgba(0, 0, 0, .74); backdrop-filter: blur(4px); }
+    .intro-dialog-inner {
+      padding: 24px 22px 18px;
+    }
+    .intro-dialog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .intro-dialog h2 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+    .intro-dialog .intro-text {
+      margin: 0;
+      color: #f0ece7;
+      line-height: 1.8;
+      white-space: pre-line;
+      font-size: 0.98rem;
+    }
+    .intro-dialog .button-row { margin-top: 20px; }
     [hidden] { display: none !important; }
     @media (max-width: 480px) {
       body { padding: 28px 12px 42px; }
@@ -139,6 +162,8 @@
       .message-card { padding: 22px 18px; }
       .message-card p { max-width: 100%; }
       .letter-content { padding: 0 16px 18px; }
+      .intro-dialog-inner { padding: 18px 16px 14px; }
+      .intro-dialog h2 { font-size: 1.3rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -159,7 +184,7 @@
         loading="lazy">
     </header>
 
-    <section class="panel message-card" aria-labelledby="greeting-title">
+    <section class="panel message-card" aria-labelledby="greeting-title" hidden>
       <span class="badge">escrevi para voce</span>
       <h2 id="greeting-title">escrevi para voce</h2>
       <p>sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
@@ -214,6 +239,48 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
         <button class="button" id="open-confirmation" type="button">sim, quero ler</button>
       </div>
     </section>
+
+    <dialog class="intro-dialog" id="intro-dialog" aria-labelledby="intro-title">
+      <div class="intro-dialog-inner">
+        <div class="intro-dialog-header">
+          <h2 id="intro-title">uma mensagem para você</h2>
+        </div>
+        <p class="intro-text">sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
+desculpa por estar fazendo isso, eu tenho um grande receio assim de acabar te estressando com isso porque nao consigo nem imaginar como voce vai reagir.
+
+eu fiz um site porque queria fazer algo pra voce, queria mostrar algumas coisas e tal, fazer algumas surpresinhas, sabe? e seu aniversario eh logo no dia do enem.... entao eu provavelmente vou te enviar e vou TENTAR dormir cedo, entao foi oq eu pensei pra poder te mandar e ir fazer a prova depois 
+
+MAS PODE LER TRANQUILO OK, EH SEU DIA EU NAO VOU FALAR NADA SOBRE ANTES OU NÓS TIPO OK PODE LER TA TUDO BEM
+
+primeiro eu quero te desejar um feliz aniversario, quero desejar que voce tenha uma vida prospera e que continue prosperando com seus objetivos, que voce consiga terminar seu ensino medio sem faltar taaaaaaanto assim (as vezes eu penso nisso sabia, se voce realmente ta indo). que voce tenha bons momentos com seus amigos e aproveite bastante essa fase da sua vida.
+espero tambem que voce se decida sobre a sua faculdade, vá fazer algo que voce realmente goste e que seja prospero pra ti, que voce algum dia consiga ver as meninas que são tao proximas de voce, voces tem uma amizade linda, e eu sempre vi que voce valoriza muito isso. então eu espero que voces continuem assim tao proximas pelo resto da vida e que consigam realizar seus planos juntas!
+
+espero tambem que voce supere seu medo de borboletas....... insetos........... animais com penas e tal...
+mas saiba que ainda mataria todas as borboletas do mundo ok!!!! 
+
+eu preparei algumas coisinhas, sao bobas mas fiz uma playlist com as musicas que me lembravam de voce, as vezes não necessariamente pela letra, mas pela banda, ou por ja ter escutado com voce, ou estilo de musica, ou algumas talvez pela letra, acho que voce vai identificar quais sao ...
+seria legal se voce pudesse dar uma atenção ok
+
+ta na cara que o site foi feito por ia e tals ne, nao quero dizer caramba foi eu que fiz pq nao foi.. eu pedi ajuda da estrutura mas tudo q ta escrito foi eu q te escrevi pq plmds neh
+alias, voce sabe que eu tava escrevendo enquanto a gente nao tava junto, e eu nao parei com isso, so de escrever todos os dias mas sempre que eu pensava em algo eu escrevia, talvez não aqueles textoes enormes mas oq eu tava sentindo
+eu escolhi algumas e coloquei lá, mas so algumas ta, nao vou colocar todas pq to com vergonha 
+eu nao quero deixar na tua cara porque tem a chance de voce nao querer ver, entao vou colocar no 
+final da pagina, pra voce so ver se realmente quiser, se clicar ali no botaozinho, eu quero ver!!
+
+TAMBEM QUERIA SABER SE VOCE CONSEGUIU CONVENCER SUA MAE PRA IR PRO SHOW, PERTINHO DE VOCE AI EM GOIANIA ME FALA SE SIM PORFAVOR
+
+agora vo fala algo q eu pensei ne e que pode acabar pesando um pouco...
+
+eu tinha pensado em te mandar isso um dia depois do seu aniversario, pq tava com medo de seila te mandar isso e voce se estressar e pum acabei com seu aniversario..... 
+mas fiquei pensando que talvez nao fizesse sentido, que poderia acabar soando como uma desculpa ou seila oq
+e eu meio que fiz isso, porque mesmo que tenhamos terminados ainda tenho muito carinho e zelo por ti, voce foi e eh alguem muito importante que passou pela minha vida e eu nao vou agir como se isso nunca tivesse acontecido, pq foi algo realmente muito bom pra mim
+
+peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais uma vez, peço perdão tambem por ter sido idiota</p>
+        <div class="button-row">
+          <button class="button" id="close-intro" type="button">fechar</button>
+        </div>
+      </div>
+    </dialog>
 
     <dialog class="confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title">
       <h2 id="confirmation-title">quer mesmo abrir as cartas?</h2>
@@ -373,6 +440,7 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
 
     const lettersSection = document.getElementById('letters-section');
     const confirmationDialog = document.getElementById('confirmation-dialog');
+    const introDialog = document.getElementById('intro-dialog');
 
     function renderLetters() {
       const list = document.getElementById('letters-list');
@@ -390,6 +458,10 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       });
     }
 
+    document.getElementById('close-intro').addEventListener('click', () => {
+      introDialog.close();
+    });
+
     document.getElementById('open-confirmation').addEventListener('click', () => {
       confirmationDialog.showModal();
     });
@@ -405,6 +477,10 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       confirmationDialog.close();
       lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    if (typeof introDialog.showModal === 'function') {
+      introDialog.showModal();
+    }
   </script>
 </body>
 </html>

@@ -20,10 +20,12 @@
       --error: #ff9a9e;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 32px 16px;
+      padding: 32px 16px 56px;
       background: var(--page);
       color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -66,7 +68,7 @@
       font-size: 1.35rem;
     }
 
-    .panel > p { line-height: 1.65; }
+    .message-card p { color: #d1d5dd; line-height: 1.8; white-space: pre-line; }
 
     .badge {
       display: block;
@@ -78,43 +80,6 @@
       color: #dce5ef;
       font-size: 0.88rem;
     }
-
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .option-button {
-      min-width: 0;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel-soft);
-      color: var(--text);
-      cursor: pointer;
-      transition: border-color 160ms ease, transform 160ms ease;
-    }
-
-    .option-button:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .option-button:focus-visible, .button:focus-visible, input:focus-visible, a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .option-image {
-      display: block;
-      width: 100%;
-      height: 128px;
-      margin-bottom: 9px;
-      border-radius: 9px;
-      background: #101218;
-      object-fit: cover;
-    }
-
-    .option-text { font-weight: 600; }
-    .message { min-height: 1.5em; margin: 14px 0 0; color: var(--error); text-align: center; }
 
     .hint-box {
       margin: 18px 0;
@@ -154,24 +119,42 @@
 
     .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
-    .letters-list { display: grid; gap: 10px; margin-top: 18px; }
-    .letter { border: 1px solid var(--border); border-radius: 12px; background: var(--panel-soft); }
-    .letter summary { padding: 14px 16px; color: var(--text); font-weight: 600; cursor: pointer; }
-    .letter-content { padding: 0 16px 16px; color: #d1d5dd; font-family: Georgia, serif; line-height: 1.8; white-space: pre-line; }
+    .message { min-height: 1.5em; margin: 14px 0 0; color: var(--error); text-align: center; }
 
     .playlist-section { padding: 20px; }
     .playlist-title { margin-bottom: 14px; }
     iframe { display: block; width: 100%; border: 0; border-radius: 12px; }
+
+    .scroll-cue {
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+      padding: 2px 0;
+      color: var(--muted);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .scroll-cue .arrow {
+      color: var(--accent);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .password-section { scroll-margin-top: 24px; }
+    .letters-list { display: grid; gap: 10px; margin-top: 18px; }
+    .letter { border: 1px solid var(--border); border-radius: 12px; background: var(--panel-soft); }
+    .letter summary { padding: 14px 16px; color: var(--text); font-weight: 600; cursor: pointer; }
+    .letter-content { padding: 0 16px 16px; color: #d1d5dd; font-family: Georgia, serif; line-height: 1.8; white-space: pre-line; }
     [hidden] { display: none !important; }
 
     @media (max-width: 480px) {
-      body { padding: 24px 12px; }
+      body { padding: 24px 12px 40px; }
       .panel { padding: 20px 16px; }
-      .option-image { height: 105px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
       .birthday-gif { display: none; }
     }
   </style>
@@ -188,49 +171,12 @@
         loading="lazy">
     </header>
 
-    <section class="panel" id="welcome-screen">
-      <h2>Uma pequena brincadeira</h2>
-      <p class="muted">O quiz e as cartas são opcionais. Você pode parar quando quiser; também pode simplesmente ouvir a playlist.</p>
-      <div class="button-row">
-        <button class="button" id="start-quiz" type="button">Começar o quiz</button>
-        <a class="button secondary" href="#playlist">Só ouvir a playlist</a>
-      </div>
-    </section>
+    <section class="panel message-card" aria-labelledby="greeting-title">
+      <span class="badge">Uma mensagem</span>
+      <h2 id="greeting-title">Feliz aniversário!</h2>
+      <p>Espero que seu dia seja leve e cheio de coisas boas. Que este novo ciclo traga bons momentos, tranquilidade e motivos para sorrir.
 
-    <section class="panel" id="quiz-screen" aria-live="polite" hidden>
-      <span class="badge" id="phase-title"></span>
-      <h2 id="question-text"></h2>
-      <div class="options-grid" id="options-container"></div>
-      <p class="message" id="quiz-error" role="status"></p>
-      <div class="button-row">
-        <button class="button secondary exit-flow" type="button">Parar por aqui</button>
-      </div>
-    </section>
-
-    <section class="panel" id="password-screen" hidden>
-      <span class="badge">Acesso opcional às cartas</span>
-      <h2>Quer continuar?</h2>
-      <p class="muted">Só avance se realmente quiser ler as mensagens. Não há problema nenhum em parar por aqui.</p>
-      <div class="hint-box"><strong>Dica:</strong> <span id="hint-text"></span></div>
-      <form class="password-form" id="password-form">
-        <label for="password-input">Digite a senha para abrir as cartas</label>
-        <input class="password-input" id="password-input" type="password" placeholder="Senha" autocomplete="off" required>
-        <button class="button" type="submit">Quero ler as cartas</button>
-      </form>
-      <p class="message" id="password-error" role="status"></p>
-      <div class="button-row">
-        <button class="button secondary exit-flow" type="button">Não, obrigado</button>
-      </div>
-    </section>
-
-    <section class="panel" id="letters-screen" hidden>
-      <span class="badge">Você escolheu continuar</span>
-      <h2>Mensagens</h2>
-      <p class="muted">Abra somente as cartas que quiser ler.</p>
-      <div class="letters-list" id="letters-list"></div>
-      <div class="button-row">
-        <button class="button secondary" id="close-letters" type="button">Fechar as cartas</button>
-      </div>
+Aproveite muito o seu dia! 🎉</p>
     </section>
 
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
@@ -243,57 +189,40 @@
         title="Playlist no Spotify">
       </iframe>
     </section>
+
+    <a class="scroll-cue" href="#password-section" aria-label="Descer até a seção opcional das cartas">
+      <span>Se quiser, continue descendo</span>
+      <span class="arrow" aria-hidden="true">↓</span>
+    </a>
+
+    <section class="panel password-section" id="password-section" aria-labelledby="password-title">
+      <span class="badge">Mensagens opcionais</span>
+      <h2 id="password-title">Cartas</h2>
+      <p class="muted">Se quiser continuar, digite a senha combinada para abrir as mensagens. Você pode parar por aqui também.</p>
+      <div class="hint-box"><strong>Dica:</strong> Uma senha que você compartilhou com ela.</div>
+      <form class="password-form" id="password-form">
+        <label for="password-input">Digite a senha para abrir as cartas</label>
+        <input class="password-input" id="password-input" type="password" placeholder="Senha" autocomplete="off" required>
+        <button class="button" type="submit">Quero ler as cartas</button>
+      </form>
+      <p class="message" id="password-error" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel" id="letters-section" aria-labelledby="letters-title" hidden>
+      <span class="badge">Mensagens</span>
+      <h2 id="letters-title">Cartas</h2>
+      <p class="muted">Abra somente as cartas que quiser ler.</p>
+      <div class="letters-list" id="letters-list"></div>
+      <div class="button-row">
+        <button class="button secondary" id="close-letters" type="button">Fechar as cartas</button>
+      </div>
+    </section>
   </main>
 
   <script>
     // Em um site estático, a senha fica visível no código-fonte e não é proteção real.
     const SECRET_PASSWORD = '123';
-    const PASSWORD_HINT = 'A senha combinada para abrir as mensagens.';
 
-    const quizData = [
-      {
-        question: 'Qual destes bichinhos você escolheria?',
-        options: [
-          { text: 'Coelhos', image: 'https://media.giphy.com/media/mCRJdoOOeom4/giphy.gif' },
-          { text: 'Pombos', image: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif' },
-          { text: 'Borboletas', image: 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif' },
-          { text: 'Joaninhas', image: 'https://media.giphy.com/media/l2R013mIf1ZXdvoyI/giphy.gif' }
-        ],
-        correctIndex: 0
-      },
-      {
-        question: 'Pergunta 2',
-        options: [
-          { text: 'Opção 1', image: 'https://media.giphy.com/media/ND6xkVPaj8tHO/giphy.gif' },
-          { text: 'Opção 2', image: 'https://media.giphy.com/media/E2d2gOO5vBR60/giphy.gif' },
-          { text: 'Opção 3', image: 'https://media.giphy.com/media/13AXYJhWNzs50k/giphy.gif' },
-          { text: 'Opção 4', image: 'https://media.giphy.com/media/d5mI2TFqNBCCZ0TFSi/giphy.gif' }
-        ],
-        correctIndex: 0
-      },
-      {
-        question: 'Pergunta 3',
-        options: [
-          { text: 'Opção 1', image: 'https://media.giphy.com/media/mCRJdoOOeom4/giphy.gif' },
-          { text: 'Opção 2', image: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif' },
-          { text: 'Opção 3', image: 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif' },
-          { text: 'Opção 4', image: 'https://media.giphy.com/media/l2R013mIf1ZXdvoyI/giphy.gif' }
-        ],
-        correctIndex: 0
-      },
-      {
-        question: 'Pergunta 4',
-        options: [
-          { text: 'Opção 1', image: 'https://media.giphy.com/media/ND6xkVPaj8tHO/giphy.gif' },
-          { text: 'Opção 2', image: 'https://media.giphy.com/media/E2d2gOO5vBR60/giphy.gif' },
-          { text: 'Opção 3', image: 'https://media.giphy.com/media/13AXYJhWNzs50k/giphy.gif' },
-          { text: 'Opção 4', image: 'https://media.giphy.com/media/d5mI2TFqNBCCZ0TFSi/giphy.gif' }
-        ],
-        correctIndex: 0
-      }
-    ];
-
-    // Cada item é uma carta independente: clique no título para abrir só aquela carta.
     const letters = [
       { title: 'Carta 1', content: '12312423' },
       { title: 'Carta 2', content: '124235' },
@@ -302,65 +231,10 @@
       { title: 'Carta 5', content: '23890523478572384' }
     ];
 
-    const screens = ['welcome-screen', 'quiz-screen', 'password-screen', 'letters-screen'];
-    let currentPhase = 0;
-
-    function showScreen(id) {
-      screens.forEach((screenId) => {
-        document.getElementById(screenId).hidden = screenId !== id;
-      });
-    }
-
-    function loadQuestion() {
-      const quiz = quizData[currentPhase];
-      document.getElementById('phase-title').textContent = `Pergunta ${currentPhase + 1} de ${quizData.length}`;
-      document.getElementById('question-text').textContent = quiz.question;
-      document.getElementById('quiz-error').textContent = '';
-
-      const optionsContainer = document.getElementById('options-container');
-      optionsContainer.replaceChildren();
-
-      quiz.options.forEach((option, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'option-button';
-        button.addEventListener('click', () => checkAnswer(index));
-
-        if (option.image) {
-          const image = document.createElement('img');
-          image.className = 'option-image';
-          image.src = option.image;
-          image.alt = option.text;
-          image.loading = 'lazy';
-          image.onerror = () => image.remove();
-          button.appendChild(image);
-        }
-
-        const text = document.createElement('span');
-        text.className = 'option-text';
-        text.textContent = option.text;
-        button.appendChild(text);
-        optionsContainer.appendChild(button);
-      });
-    }
-
-    function checkAnswer(selectedIndex) {
-      const quiz = quizData[currentPhase];
-      if (selectedIndex !== quiz.correctIndex) {
-        document.getElementById('quiz-error').textContent = 'Essa não era a resposta escolhida. Tente outra opção ou pare por aqui.';
-        return;
-      }
-
-      currentPhase += 1;
-      if (currentPhase < quizData.length) {
-        loadQuestion();
-      } else {
-        document.getElementById('hint-text').textContent = PASSWORD_HINT;
-        document.getElementById('password-error').textContent = '';
-        document.getElementById('password-input').value = '';
-        showScreen('password-screen');
-      }
-    }
+    const form = document.getElementById('password-form');
+    const passwordInput = document.getElementById('password-input');
+    const passwordError = document.getElementById('password-error');
+    const lettersSection = document.getElementById('letters-section');
 
     function renderLetters() {
       const list = document.getElementById('letters-list');
@@ -379,28 +253,23 @@
       });
     }
 
-    document.getElementById('start-quiz').addEventListener('click', () => {
-      currentPhase = 0;
-      loadQuestion();
-      showScreen('quiz-screen');
-    });
-
-    document.querySelectorAll('.exit-flow').forEach((button) => {
-      button.addEventListener('click', () => showScreen('welcome-screen'));
-    });
-
-    document.getElementById('password-form').addEventListener('submit', (event) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
-      const entered = document.getElementById('password-input').value.trim();
-      if (entered === SECRET_PASSWORD) {
+      if (passwordInput.value.trim() === SECRET_PASSWORD) {
         renderLetters();
-        showScreen('letters-screen');
+        lettersSection.hidden = false;
+        passwordError.textContent = '';
+        lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        document.getElementById('password-error').textContent = 'Senha incorreta. Você pode tentar novamente ou parar por aqui.';
+        passwordError.textContent = 'Senha incorreta. Você pode tentar novamente ou parar por aqui.';
       }
     });
 
-    document.getElementById('close-letters').addEventListener('click', () => showScreen('welcome-screen'));
+    document.getElementById('close-letters').addEventListener('click', () => {
+      lettersSection.hidden = true;
+      passwordInput.value = '';
+      document.getElementById('password-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   </script>
 </body>
 </html>

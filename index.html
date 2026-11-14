@@ -47,110 +47,32 @@
     }
     h1 { margin: 0 0 10px; font-size: clamp(2.2rem, 7vw, 3.05rem); line-height: 1.1; }
     header p, .muted { color: var(--muted); line-height: 1.7; }
-    .birthday-gif {
-      display: block;
-      width: min(200px, 68%);
-      max-height: 132px;
-      object-fit: contain;
-      margin: 20px auto 0;
-      border-radius: 12px;
-      opacity: 0.9;
-    }
+
     .panel, .playlist-section {
-      padding: 28px;
+      padding: 28px 26px;
       border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--panel);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      border-radius: 22px;
+      background: rgba(17, 20, 26, 0.96);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
     }
-    .panel h2, .playlist-title {
-      margin: 0 0 14px;
-      text-align: center;
-      font-size: 1.45rem;
-    }
-    .letter-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      background: rgba(217, 197, 156, 0.06);
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 150ms ease, background 150ms ease;
-    }
-    .letter-button:hover {
-      transform: translateY(-1px);
-      background: rgba(217, 197, 156, 0.12);
-    }
-    .letter-button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-    .letter-container {
-      display: none;
-      margin-top: 20px;
-      padding: 24px 18px 18px;
-      border: 1px solid rgba(217, 197, 156, 0.32);
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(242, 232, 210, 0.03), rgba(242, 232, 210, 0.01)),
-        rgba(12, 15, 19, 0.98);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 18px 32px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .letter-container::before,
-    .letter-container::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(217, 197, 156, 0.16);
-      border-radius: 12px;
-      pointer-events: none;
-    }
-    .letter-container.visible {
-      display: block;
+    .panel h2, .playlist-title { margin: 0 0 14px; text-align: center; font-size: 1.5rem; }
+
+    .message-card {
+      max-width: 100%;
+      padding: 28px 36px;
+      background: rgba(18, 20, 25, 0.96);
+      border-radius: 22px;
     }
     .message-card p {
-      margin: 0;
-      color: #d8d5cf;
+      margin: 0 auto;
+      max-width: 90%;
+      color: #efefe9;
       line-height: 1.9;
       white-space: pre-line;
       text-align: center;
+      font-size: clamp(0.96rem, 2vw, 1.14rem);
     }
-    .badge {
-      display: block;
-      width: fit-content;
-      margin: 0 auto 14px;
-      padding: 5px 13px;
-      border: 1px solid rgba(211, 192, 154, 0.35);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .hint-box {
-      margin: 18px 0;
-      padding: 14px 16px;
-      border-left: 2px solid var(--accent);
-      border-radius: 4px 10px 10px 4px;
-      background: var(--panel-soft);
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .password-form { display: grid; gap: 12px; }
-    .password-input {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text);
-    }
+
     .button {
       display: inline-flex;
       min-height: 46px;
@@ -167,13 +89,58 @@
       transition: background-color 180ms ease, transform 180ms ease;
     }
     .button:hover { background: #e2d2b2; transform: translateY(-1px); }
-    .button.secondary {
-      border-color: var(--border);
-      background: transparent;
-      color: var(--text);
+    .button:focus-visible, .letter-button:focus-visible, .letter summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
+    .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button.secondary:hover { background: var(--panel-soft); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+
+    .letter-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 20px;
+      border: 1px solid rgba(217, 197, 156, 0.5);
+      border-radius: 999px;
+      background: rgba(217, 197, 156, 0.06);
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease;
+    }
+    .letter-button:hover { background: rgba(217, 197, 156, 0.12); transform: translateY(-1px); }
+    .letter-container {
+      display: none;
+      position: relative;
+      margin-top: 22px;
+      padding: 30px 26px;
+      border: 1px solid rgba(217, 197, 156, 0.35);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(217, 197, 156, 0.055), rgba(15, 17, 22, 0.98) 42%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.035), 0 18px 38px rgba(0,0,0,0.24);
+    }
+    .letter-container::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(217, 197, 156, 0.14);
+      border-radius: 11px;
+      pointer-events: none;
+    }
+    .letter-container.visible { display: block; }
+    .letter-container p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #e7e2d9;
+      line-height: 1.9;
+      white-space: pre-line;
+      text-align: center;
+    }
+
     .playlist-section { padding: 22px 18px; }
     .playlist-title { margin-bottom: 18px; }
     iframe { display: block; width: 100%; border: 0; border-radius: 14px; }
@@ -185,23 +152,19 @@
     .letters-section { scroll-margin-top: 24px; }
     .letters-invite { text-align: center; }
     .letters-invite p { color: var(--muted); }
-    .letter-character {
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .letter-copy {
-      margin: 0;
-      color: var(--text);
-      line-height: 1.85;
-      white-space: pre-line;
-      text-align: justify;
-    }
-    .letter-copy + .letter-copy { margin-top: 14px; }
+    [hidden] { display: none !important; }
 
     @media (max-width: 480px) {
       body { padding: 28px 12px 42px; }
       .panel, .playlist-section { padding: 20px 16px; }
-      .letter-container { padding: 18px 14px 16px; }
+      .message-card { padding: 22px 18px; }
+      .message-card p { max-width: 100%; }
+      .letter-container { padding: 24px 18px; }
+      .letter-content { padding: 0 16px 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button, .letter-button { transition: none; }
     }
   </style>
 </head>
@@ -210,22 +173,15 @@
     <header>
       <h1>feliz aniversario</h1>
       <p>nao esqueci de voce</p>
-      <img
-        class="birthday-gif"
-        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmU2NmU3YjYzMzMzMWNmNmUyZTIxYzRlNGIzZDIzYmFmZGIzY2I3OSZjdD1n/HhTXt43pk1I1W/giphy.gif"
-        alt="animacao de confetes de aniversario"
-        loading="lazy">
     </header>
 
     <section class="panel message-card" aria-labelledby="greeting-title">
-      <span class="badge">escrevi para voce</span>
       <h2 id="greeting-title">escrevi para voce</h2>
       <div class="button-row">
-        <button id="show-letter-button" class="letter-button" type="button">abrir carta</button>
+        <button id="show-letter-button" class="letter-button" type="button" aria-expanded="false" aria-controls="message-letter">abrir carta</button>
       </div>
-
-      <div id="message-letter" class="letter-container" aria-live="polite">
-        <p class="letter-copy">sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
+      <div id="message-letter" class="letter-container" aria-live="polite" hidden>
+        <p>sei que nós terminamos, e ja estamos ha um tempinho sem conversar um com o outro, por isso ainda fiquei com medo de fazer isso, mas eu nao consegui me segurar ....
 desculpa por estar fazendo isso, eu tenho um grande receio assim de acabar te estressando com isso porque nao consigo nem imaginar como voce vai reagir.
 
 eu fiz um site porque queria fazer algo pra voce, queria mostrar algumas coisas e tal, fazer algumas surpresinhas, sabe? e seu aniversario eh logo no dia do enem.... entao eu provavelmente vou te enviar e vou TENTAR dormir cedo, entao foi oq eu pensei pra poder te mandar e ir fazer a prova depois 
@@ -426,17 +382,18 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       }
     ];
 
-    const showLetterButton = document.getElementById('show-letter-button');
     const messageLetter = document.getElementById('message-letter');
-    const openLettersButton = document.getElementById('open-letters');
+    const showLetterButton = document.getElementById('show-letter-button');
     const lettersSection = document.getElementById('letters-section');
 
     showLetterButton.addEventListener('click', () => {
-      messageLetter.classList.toggle('visible');
-      const isVisible = messageLetter.classList.contains('visible');
-      showLetterButton.textContent = isVisible ? 'fechar carta' : 'abrir carta';
-      if (isVisible) {
-        messageLetter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const opening = !messageLetter.classList.contains('visible');
+      messageLetter.classList.toggle('visible', opening);
+      messageLetter.hidden = !opening;
+      showLetterButton.textContent = opening ? 'fechar carta' : 'abrir carta';
+      showLetterButton.setAttribute('aria-expanded', String(opening));
+      if (opening) {
+        messageLetter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     });
 
@@ -456,7 +413,7 @@ sei que em um dia normal você se estressaria comigo, por causa do horário, coi
       });
     }
 
-    openLettersButton.addEventListener('click', () => {
+    document.getElementById('open-letters').addEventListener('click', () => {
       renderLetters();
       lettersSection.hidden = false;
       lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });

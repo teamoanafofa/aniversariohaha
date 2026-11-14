@@ -45,13 +45,8 @@
       font-weight: 500;
       letter-spacing: 0.015em;
     }
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2.2rem, 7vw, 3.05rem);
-      line-height: 1.1;
-    }
+    h1 { margin: 0 0 10px; font-size: clamp(2.2rem, 7vw, 3.05rem); line-height: 1.1; }
     header p, .muted { color: var(--muted); line-height: 1.7; }
-
     .birthday-gif {
       display: block;
       width: min(210px, 70%);
@@ -62,7 +57,6 @@
       opacity: 0.92;
       filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.32));
     }
-
     .panel, .playlist-section {
       padding: 28px 26px;
       border: 1px solid var(--border);
@@ -70,20 +64,8 @@
       background: rgba(17, 20, 26, 0.96);
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
     }
-
-    .panel h2, .playlist-title {
-      margin: 0 0 14px;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-
-    .message-card {
-      max-width: 100%;
-      padding: 28px 36px;
-      background: rgba(18, 20, 25, 0.96);
-      border-radius: 22px;
-    }
-
+    .panel h2, .playlist-title { margin: 0 0 14px; text-align: center; font-size: 1.5rem; }
+    .message-card { max-width: 100%; padding: 28px 36px; background: rgba(18, 20, 25, 0.96); border-radius: 22px; }
     .message-card p {
       margin: 0 auto;
       max-width: 90%;
@@ -93,7 +75,6 @@
       text-align: center;
       font-size: clamp(0.96rem, 2vw, 1.14rem);
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
@@ -108,28 +89,6 @@
       text-transform: uppercase;
       background: rgba(255, 255, 255, 0.01);
     }
-
-    .hint-box {
-      margin: 18px 0 12px;
-      padding: 14px 16px;
-      border-left: 2px solid var(--accent);
-      border-radius: 10px;
-      background: rgba(250, 250, 250, 0.02);
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .password-form { display: grid; gap: 12px; }
-    .password-input {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #101115;
-      color: var(--text);
-      text-align: center;
-    }
-    .password-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .button {
       display: inline-flex;
       min-height: 46px;
@@ -146,71 +105,45 @@
       transition: background-color 180ms ease, transform 180ms ease;
     }
     .button:hover { background: #e2d2b2; transform: translateY(-1px); }
-    .button:focus-visible, .scroll-cue:focus-visible, .letter summary:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
+    .button:focus-visible, .letter summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .button.secondary { border-color: var(--border); background: transparent; color: var(--text); }
     .button.secondary:hover { background: var(--panel-soft); }
     .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
-    .message { min-height: 1.5em; margin: 14px 0 0; color: var(--error); text-align: center; }
-
     .playlist-section { padding: 22px 18px; }
     .playlist-title { margin-bottom: 18px; }
     iframe { display: block; width: 100%; border: 0; border-radius: 14px; }
-
-    .scroll-cue {
-      display: flex;
-      width: 100%;
-      min-height: 90px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 18px 16px;
-      border: 1px solid rgba(211, 192, 154, 0.45);
+    .letters-list { display: grid; gap: 12px; margin-top: 22px; }
+    .letter { border: 1px solid var(--border); border-radius: 14px; background: var(--panel-soft); overflow: hidden; }
+    .letter summary { padding: 15px 18px; color: var(--text); font-weight: 600; cursor: pointer; }
+    .letter summary::marker { color: var(--accent); }
+    .letter-content { padding: 0 20px 20px; color: #e2ded7; font-family: Georgia, serif; line-height: 1.85; white-space: pre-wrap; }
+    .letters-section { scroll-margin-top: 24px; }
+    .letters-invite { text-align: center; }
+    .letters-invite p { color: var(--muted); }
+    .confirmation-dialog {
+      width: min( calc(100% - 32px), 440px);
+      padding: 26px;
+      border: 1px solid var(--border);
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(211, 192, 154, 0.08), rgba(27, 29, 35, 0.96));
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      background: #171a20;
       color: var(--text);
-      font-size: 1rem;
-      font-weight: 650;
-      text-align: center;
-      text-decoration: none;
-      transition: transform 180ms ease, background-color 180ms ease;
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
     }
-    .scroll-cue:hover { transform: translateY(-2px); background: rgba(42, 43, 49, 0.96); }
-    .scroll-cue .arrow {
-      color: var(--accent);
-      font-size: 1.9rem;
-      line-height: 1;
-      animation: point-down 1.2s ease-in-out infinite;
-    }
-
-    @keyframes point-down {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(5px); }
-    }
-
-    .password-section { scroll-margin-top: 24px; }
-    .letters-list { display: grid; gap: 10px; margin-top: 18px; }
-    .letter { border: 1px solid var(--border); border-radius: 12px; background: var(--panel-soft); }
-    .letter summary { padding: 14px 16px; color: var(--text); font-weight: 600; cursor: pointer; }
-    .letter-content { padding: 0 16px 16px; color: #d8d5cf; font-family: Georgia, serif; line-height: 1.8; white-space: pre-line; }
+    .confirmation-dialog::backdrop { background: rgba(0, 0, 0, .72); backdrop-filter: blur(3px); }
+    .confirmation-dialog h2 { margin: 0 0 10px; font-family: Georgia, serif; font-weight: 500; }
+    .confirmation-dialog p { color: var(--muted); }
     [hidden] { display: none !important; }
-
     @media (max-width: 480px) {
       body { padding: 28px 12px 42px; }
       .panel, .playlist-section { padding: 20px 16px; }
       .message-card { padding: 22px 18px; }
       .message-card p { max-width: 100%; }
-      .scroll-cue { min-height: 80px; }
+      .letter-content { padding: 0 16px 18px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .birthday-gif { display: none; }
-      .scroll-cue, .scroll-cue .arrow, .button { animation: none; transition: none; }
+      .button { transition: none; }
     }
   </style>
 </head>
@@ -273,49 +206,173 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
       </iframe>
     </section>
 
-    <a class="scroll-cue" href="#password-section" aria-label="descer ate a secao opcional das cartas">
-      <span>fiz algo pra voce, continue descendo se quiser ver</span>
-      <span class="arrow" aria-hidden="true">↓</span>
-    </a>
-
-    <section class="panel password-section" id="password-section" aria-labelledby="password-title">
-      <span class="badge">mensagens opcionais</span>
-      <h2 id="password-title">cartas</h2>
-      <p class="muted">se quiser continuar, digite a senha combinada para abrir as mensagens. voce pode parar por aqui tambem.</p>
-      <div class="hint-box"><strong>dica:</strong> uma senha que voce compartilhou com ela.</div>
-      <form class="password-form" id="password-form">
-        <label for="password-input">digite a senha para abrir as cartas</label>
-        <input class="password-input" id="password-input" type="password" placeholder="senha" autocomplete="off" required>
-        <button class="button" type="submit">quero ler as cartas</button>
-      </form>
-      <p class="message" id="password-error" role="status" aria-live="polite"></p>
+    <section class="panel letters-invite" aria-labelledby="letters-invite-title">
+      <span class="badge">cartas</span>
+      <h2 id="letters-invite-title">voce quer ler as cartas?</h2>
+      <p>se quiser, confirme para abrir as cartas.</p>
+      <div class="button-row">
+        <button class="button" id="open-confirmation" type="button">sim, quero ler</button>
+      </div>
     </section>
 
-    <section class="panel" id="letters-section" aria-labelledby="letters-title" hidden>
-      <span class="badge">mensagens</span>
-      <h2 id="letters-title">cartas</h2>
-      <p class="muted">abra somente as cartas que quiser ler.</p>
-      <div class="letters-list" id="letters-list"></div>
+    <dialog class="confirmation-dialog" id="confirmation-dialog" aria-labelledby="confirmation-title">
+      <h2 id="confirmation-title">quer mesmo abrir as cartas?</h2>
+      <p>confirme se deseja continuar.</p>
       <div class="button-row">
-        <button class="button secondary" id="close-letters" type="button">fechar as cartas</button>
+        <button class="button secondary" id="cancel-confirmation" type="button">voltar</button>
+        <button class="button" id="confirm-open-letters" type="button">sim, abrir cartas</button>
       </div>
+    </dialog>
+
+    <section class="panel letters-section" id="letters-section" aria-labelledby="letters-title" hidden>
+      <span class="badge">cartas</span>
+      <h2 id="letters-title">cartas</h2>
+      <p class="muted">cada texto esta identificado pela data em que foi escrito.</p>
+      <div class="letters-list" id="letters-list"></div>
     </section>
   </main>
 
   <script>
-    const SECRET_PASSWORD = '123';
     const letters = [
-      { title: 'carta 1', content: '12312423' },
-      { title: 'carta 2', content: '124235' },
-      { title: 'carta 3', content: '2343' },
-      { title: 'carta 4', content: '2353452' },
-      { title: 'carta 5', content: '23890523478572384' }
+      {
+        title: '6 de outubro, 03:35',
+        content: `eu não sei mt bem por onde começar, realmente nunca tive esse hábito de escrever para mim mesmo, a não ser os pequenos textos que fiz pra ti, mas me vejo perdido, sem saber oq fazer, sem saber oq seguir, e pior sem ter ninguém pra compartilhar minhas angústias e pedir por um abraço
+
+sei que em um dia normal você se estressaria comigo, por causa do horário, coisas que eu deveria estar evitando, já q eu arrumei meu sono há pouquíssimo tempo, mas sendo bem honesto, o que eu posso fazer? porque eu deveria continuar com meu sono certo? minha única motivação era fazer isso por você, pra te manter segura e me tornar alguém mais digno de te ter ao lado, mas e agora? agora que eu não tenho você mais, agora que eu não sei mais pra onde ir ou o que fazer? eu estou sem norte, e tudo que eu queria era você como minha bússola, parece vergonhoso falar coisas como essa, mas pra falar bem a verdade, é a única coisa que eu consigo pensar pra tentar explicar oq sinto, me sinto perdido, sem motivações, e a única coisa que eu tenho certeza é que eu sinto falta de você`
+      },
+      {
+        title: '8 de outubro',
+        content: `hoje, desde que terminamos fui p aula pela primeira vez tive algumas coisas que não podia perder, e por mais que a gente não conversasse tanto durante a tarde, pq as vezes vc tb tava em aula, foi estranho porque eu não podia ficar esperando você aparecer, pela sua mensagem, por você dizendo que já havia chegado, não pude falar que já estava so esperando o ônibus, e sei lá tudo isso eh mt estranho e ainda to tentando lidar com isso
+
+além disso, meus amigos comentaram sobre eu estar cabisbaixo, embora eu ainda tenha achado que eu tava aparentando estar bem, mas aparentemente era so engano meu e talvez isso esteja um pouco na cara
+
+eu tenho algumas provas amanhã e preciso ir durante a manhã, eu ainda continuo sentindo a sua falta e falta de te encher de vídeos enquanto você tá na aula, de poder te enviar os vídeos fofos que aparecem na minha fy, por algum motivo eu removi todos os republicados q eu tinha com excesso de alguns, eu ainda quero ver seu perfil e saber como você está, se você tá lidando bem com isso, oq eu suponho que sim, mas eu n consigo parar de pensar como tá sendo pra você, se você pensa em mim, se sente minha falta
+
+me fez lembrar que antes de vc me bloquear, eu ia pedir pra você falar comigo caso sentisse que se arrependeu, ou sentisse saudade, que não deixasse seu orgulho tomar conta e que fosse honesta com seus sentimentos, mas enrolei tanto pra falar isso e fiquei fazendo outras brincadeiras, que você me bloqueou e eu não tive nem a chance de falar nada disso
+
+outra coisa que notei, eh que eu já escrevo tem 3 dias KKKKKKK parece ki eu so aquele cara do diário de uma paixão, (talvez eu pare um pouco) mas… queria ser mesmo bls porque no final os dois morrem juntos e seila quero te esperar, e quer ter esperanças em te ter mais uma vez, e ainda tenho, mas as vezes tento ser lúcido e imagino que é bem difícil isso acontecer, mas eu ainda n consigo desistir dessa ideia
+
+eu ainda amo muito você, e sinto a sua falta`
+      },
+      {
+        title: '9 de outubro',
+        content: `Eh 11 hora do dia ainda e eu ja to morreno de saudade kkkkkkk
+
+fiz uma prova agora pela manhã, era pelo pc então era mais flexível e colocaram musicas, e era sertanejo, lembrei de você porra cu diabo inferno saudade do capeta
+
+aí tipo agr eh 12:23 eu sai da escola pra ir almoçar me chamaram pra beber eu bebi um pouco tal tou um tico devagar e agr to ouvindo sertanejo dnv kkkk tipo eu to gostando mt de anestesiado essa musica por algum motivo eu acho boa e meu deus eu sinto tanto a sua falta minha vontade eh de te mandar sms desde o primeiro dia em que me bloqueou mas pqp seila eu n gerir que tenha que me bloquear até no número, de maneira que parecesse que vc tá me evitando ao máximo e tb não queria soar um incômodo então eu to tentando me segurar
+
+a vddd eh que eu quero te mandar mensagem no seu agiersqrio mas eu n faço ideia se vc vai me aceitar ou se vc vai me atender enfim eu n sei oq vc vai achar disso entao eu vou te mandar um dia depois do seu aniversário, eu vou deixar vc ter um bom dia de aniversário, aproveitar bastante, e se isso te irritar pelomenos jao vai ser no seu dia, mas eu ainda to esperando ansioso pra poder te mandar mensagem, só mais um tempinho e eu vou poder falar com você denovo, assim eu espero
+
+seila eu amo vc eu sinto sua falta e eu queria que você percebesse isso mas n sei como posso fazer
+eu ainda te stalkeio todos os dias esperando por algo algum sinal seila mas eu acho que vc ta lidando com isso bem tranquila
+eu queria conhecer sua mae eu queria conhecer sua família, sua irmã pra saber se ela realmente nao ia gostar de mim ou me odiar mas seila eu queria me sentir próximo assim de vc
+sertanejo por algum motivo me lembra churrasco, acabo pensando a gente em um churrasco de família oq acaba me fazendo pensa que eu ainda n desisti de vc e ainda tenho planos pra nos
+
+eu te a mo
+
+ai agora depôs de escreve to ouvindo marília mendicância oq falta em vc sou eu kkkk eu quero pensar assim meu deus sente saudades de mim pfv eu sinto muita que vontade imensa de falar com vc
+eu quero falar c vc agora mas tb nao quero incomodar mas eu etenho medo de vc ainda sentir algo e falar com você so no seu aniversário, quando vc tiver desistido de mim`
+      },
+      {
+        title: '17 de outubro',
+        content: `de inicio, eu percebi que eu tinha dito pra mim mesmo que não iria mais escrever ou coisas assim, pq meio q eu fazia isso na intenção de que ela pudesse ver algum dia, e eu meio q to caindo um pouco nessa realidade, em q talvez já tenha ido mesmo e não há nada q eu possa fazer
+mas eu ainda queria que ela pudesse ler meus textos e que eu pudesse escrever novos
+
+eu sinto uma falta bizarra dela, sinto mesmo e n tem um dia sequer que não paro de pensar nela, no jeitinho dela, da maneira em que ela ficava estressada c minhas bobeiras, as vezes em que eu fazia isso de propósito c brincadeiras sem graça, os apelidos que eu dava e que eu recebi dela
+tudo isso, me fez perceber que foi com ela que eu realmente amei e me senti amado
+pedi perdão pelos meus erros e me arrependi de verdade
+assim como tolerei alguns porque eu sabia que valia a pena e que íamos nos entender
+alguém q eu me sentia na obrigação de ser alguém melhor
+alguém que fosse digno de ter o amor dela
+alguém que pudesse ser um bom namorado
+talvez um bom genro
+quem sabe um bom pai
+eu só queria estar com ela, independente de tudo
+eu só queria que ela fosse minha, e q eu fosse dela
+um do outro, em um mundo em que a gente só precisaríamos de nós mesmos
+eh meio irreal e egoista eu compreendo isso e tipo seila
+mas eu queria msm ter ela pra mim
+mas agora, aparentemente se foi
+na nossa última conversa ela me disse que tb sentia saudade
+e que ainda me amava também
+e seila eh recente isso eh normal eu acho
+mas de todo jeito, isso me alegrou em saber q ela ainda pensava em mim
+mas tambem tive q lidar aquele jeitinho dela que eu ja sabia q ia acontecer
+ela nao ia querer voltar atrás na palavra
+acho que por mais que ela quisesse, sentisse no peito que deveria
+ela me disse que não iria voltar, então conhecendo a minha princesinha eu sei que ela não vai querer
+mas eu sinto falta disso
+desse jeitinho complicado dela
+estressada e orgulhosa
+mas também fofa e carinhosa
+eu sinto falta das pequenas declarações de amor que aconteciam de maneira espontânea
+ela não conseguia escrever pra mim, mesmo que alguns dias eu já tenha pedido
+mas seila por mim tudo bem, desde que ela esteja ao meu lado eu fico feliz
+fico feliz com o pensamento de vc dizendo que me ama do nada
+
+ou em relembrar de momentos que tivemos juntos
+como as carpas quando assistimos juntos, ou até mesmo o vídeo em inglês q eu tentei traduzir pra ela
+os vídeos de caminhão
+falando eu te amo juntos
+várias risadas em call
+vc dizendo estar estressada e ainda rindo comigo, esse dia foi incrível
+e também o “monstro”, seu sotaquezinho misto q vc n aceitava q eu tava certo…
+
+eu pretendo aparecer no seu aniversário
+talvez possa ser minha última vez porque eu n quero ser um incômodo pra vc
+será q vc ficaria feliz?
+eu não sei, mas espero não acabar c o dia do seu aniversário, por isso penso em te mandar na madrugada do outro dia
+de toda maneira, eu sinto falta de você, eu sinto muito mesmo e eu ainda te quero,
+
+eu queria muito que você mudasse de ideia, queria estar contigo uma vez e mostrar o tanto que eu t amo
+
+eu comecei o texto falando “ela” pq seila, n queria que fosse taaao focado nisso sabe talvez só um tico da minha saudade e tal
+mas acabou virando tudo sobre vc e nos
+mas a verdade eh que eu amo a Ana Beatriz e ela me mataria se soubesse a hora q to indo dormir
+mas eu te amo ana eu te amo mesmo e sinto sua falta`
+      },
+      {
+        title: '27 de outubro',
+        content: `Hm
+
+hoje passei maior calor meu jesus
+será q ai tb ta mt quente?
+no caminho de volta meu fone descarregou, fui ouvindo maior barulho no ônibus
+no caminho de casa, reparei o quão linda a lua estava
+ela parecia estar cheia, a cor meio alaranjada, nao sei explicar mt bem
+mas senti que eu deveria te falar isso, senti a vontade de abrir meu wpp e te dizer que a lua está linda, assim como eu fiz algumas vezes, lembro do dia q te comentei e vc infelizmente nao conseguiu ver
+provavelmente eu iria te falar sobre a lua, o quanto ela estava linda e iria fazer alguma piada ou sem graça ou algum elogio beeem nadaver só pra te ver sem graça
+uma noite assim me fez me sentir saudade dos nossos momentos juntos, quando conversávamos a noite, quando vc me xingava pq eu as vezes demorava 30 segundos pra te responder
+quando eu li algumas historinhas pra você dormir, eu não sei se realmente gostou, mas foi legal eu achei fofo aquele momento
+lembro de estarmos conversando e você apertou o celular contra a bochecha, n sei exatamente o que aconteceu mas a sua voz, sua maneira de falar ficou muito fofa
+me deixou bem alegre no momento eu gostava dos nossos momentos assim, quando eu sentia que vc se sentia confortável cmg, quando vc era bobinha comigo e outras coisinhas que enchem meu peito de alegria so de lembrar
+
+nao sei como posso termina esse texto eu sinto falta de vc ana beatriz bls sinto bastante ta vai acabar assim .`
+      },
+      {
+        title: '12 de novembro',
+        content: `Tenho pensado muito em você, no seu aniversário, em coisas que eu poderia te falar
+se eu realmente poderia ter falar algo
+tem um tempinho que eu não escrevo, por não saber mais organizar meus pensamentos de maneira que não sejam tão confusos
+eu ainda gosto muito de voce ainda penso muito em você, n tem um dia se quer que não penso em ti e na possibilidade de te ter comigo
+não te esqueci e nem vou, e na realidade acho que eu nem quero isso
+
+seu aniversário eh daqui a alguns dias, eu tenho pensado no que posso fazer pra você, se realmente vai se agradar com as coisas que vou fazer pra ti, se você se estressaria com isso
+na vdd isso eh completamente um mistério pra mim KKKKKKKKK
+quando eu fazia isso, vc sempre falava que gostava e que ficava boba
+e tudo bem, nos éramos namorados ne
+mas agora não somos mais, então não sei
+mas no seu aniversário, não pretendo fazer nada extravagante, alguns textos com coisas básicas coisas leves e tal, sem falar que eu sinto saudades ou que eu te amo, pq não quero ser idiota, é seu dia, eu não vou falar sobre mim, ou sobre nós. penso em taaaalvez colocar as cartas, mas colocar de maneira escondida pra vc ver so se vc realmente quiser
+
+o dia é seu, todinho seu, e não quero estragar, e perdão se eu vou ser egoista mas sei lá, n consigo esquecer do seu dia e nem deixar ele passar sem ao menos te dar um pequeno oi
+
+então já adianto meu pedido de desculpas ok!!! n sei se você vai ver isso mas ok.`
+      }
     ];
 
-    const form = document.getElementById('password-form');
-    const passwordInput = document.getElementById('password-input');
-    const passwordError = document.getElementById('password-error');
     const lettersSection = document.getElementById('letters-section');
+    const confirmationDialog = document.getElementById('confirmation-dialog');
 
     function renderLetters() {
       const list = document.getElementById('letters-list');
@@ -333,22 +390,20 @@ peço perdão se isso acabar te estressando, posso estar sendo egoista, e mais u
       });
     }
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      if (passwordInput.value.trim() === SECRET_PASSWORD) {
-        renderLetters();
-        lettersSection.hidden = false;
-        passwordError.textContent = '';
-        lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        passwordError.textContent = 'senha incorreta. voce pode tentar novamente ou parar por aqui.';
-      }
+    document.getElementById('open-confirmation').addEventListener('click', () => {
+      confirmationDialog.showModal();
     });
 
-    document.getElementById('close-letters').addEventListener('click', () => {
-      lettersSection.hidden = true;
-      passwordInput.value = '';
-      document.getElementById('password-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('cancel-confirmation').addEventListener('click', () => {
+      confirmationDialog.close();
+      document.getElementById('open-confirmation').focus();
+    });
+
+    document.getElementById('confirm-open-letters').addEventListener('click', () => {
+      renderLetters();
+      lettersSection.hidden = false;
+      confirmationDialog.close();
+      lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   </script>
 </body>

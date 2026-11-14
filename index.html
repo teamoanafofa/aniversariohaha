@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#090a0d">
-  <title>Uma lembrança de aniversário</title>
+  <title>uma lembranca de aniversario</title>
   <style>
     * { box-sizing: border-box; }
     :root {
@@ -187,59 +187,59 @@
 <body>
   <main class="container">
     <header>
-      <h1>Feliz aniversário</h1>
-      <p>Não esqueci de você</p>
+      <h1>feliz aniversario</h1>
+      <p>nao esqueci de voce</p>
       <img
         class="birthday-gif"
         src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmU2NmU3YjYzMzMzMWNmNmUyZTIxYzRlNGIzZDIzYmFmZGIzY2I3OSZjdD1n/HhTXt43pk1I1W/giphy.gif"
-        alt="Animação de confetes de aniversário"
+        alt="animacao de confetes de aniversario"
         loading="lazy">
     </header>
 
     <section class="panel message-card" aria-labelledby="greeting-title">
-      <span class="badge">Uma mensagem</span>
-      <h2 id="greeting-title">Feliz aniversário!</h2>
-      <p>Espero que seu dia seja leve e cheio de coisas boas. Que este novo ciclo traga bons momentos, tranquilidade e motivos para sorrir.
+      <span class="badge">uma mensagem</span>
+      <h2 id="greeting-title">feliz aniversario!</h2>
+      <p>espero que seu dia seja leve e cheio de coisas boas. que este novo ciclo traga bons momentos, tranquilidade e motivos para sorrir.
 
-Aproveite muito o seu dia! 🎉</p>
+aproveite muito o seu dia! 🎉</p>
     </section>
 
     <section class="playlist-section" id="playlist" aria-labelledby="playlist-title">
-      <h2 class="playlist-title" id="playlist-title">Uma playlist para acompanhar o dia</h2>
+      <h2 class="playlist-title" id="playlist-title">uma playlist para acompanhar o dia</h2>
       <iframe
         src="https://open.spotify.com/embed/playlist/0Nht3YpRNmmUic8BIVtYwA?utm_source=generator"
         height="352"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
-        title="Playlist no Spotify">
+        title="playlist no spotify">
       </iframe>
     </section>
 
-    <a class="scroll-cue" href="#password-section" aria-label="Descer até a seção opcional das cartas">
-      <span>Fiz algo pra você, continue descendo se quiser ver</span>
+    <a class="scroll-cue" href="#password-section" aria-label="descer ate a secao opcional das cartas">
+      <span>fiz algo pra voce, continue descendo se quiser ver</span>
       <span class="arrow" aria-hidden="true">↓</span>
     </a>
 
     <section class="panel password-section" id="password-section" aria-labelledby="password-title">
-      <span class="badge">Mensagens opcionais</span>
-      <h2 id="password-title">Cartas</h2>
-      <p class="muted">Se quiser continuar, digite a senha combinada para abrir as mensagens. Você pode parar por aqui também.</p>
-      <div class="hint-box"><strong>Dica:</strong> Uma senha que você compartilhou com ela.</div>
+      <span class="badge">mensagens opcionais</span>
+      <h2 id="password-title">cartas</h2>
+      <p class="muted">se quiser continuar, digite a senha combinada para abrir as mensagens. voce pode parar por aqui tambem.</p>
+      <div class="hint-box"><strong>dica:</strong> uma senha que voce compartilhou com ela.</div>
       <form class="password-form" id="password-form">
-        <label for="password-input">Digite a senha para abrir as cartas</label>
-        <input class="password-input" id="password-input" type="password" placeholder="Senha" autocomplete="off" required>
-        <button class="button" type="submit">Quero ler as cartas</button>
+        <label for="password-input">digite a senha para abrir as cartas</label>
+        <input class="password-input" id="password-input" type="password" placeholder="senha" autocomplete="off" required>
+        <button class="button" type="submit">quero ler as cartas</button>
       </form>
       <p class="message" id="password-error" role="status" aria-live="polite"></p>
     </section>
 
     <section class="panel" id="letters-section" aria-labelledby="letters-title" hidden>
-      <span class="badge">Mensagens</span>
-      <h2 id="letters-title">Cartas</h2>
-      <p class="muted">Abra somente as cartas que quiser ler.</p>
+      <span class="badge">mensagens</span>
+      <h2 id="letters-title">cartas</h2>
+      <p class="muted">abra somente as cartas que quiser ler.</p>
       <div class="letters-list" id="letters-list"></div>
       <div class="button-row">
-        <button class="button secondary" id="close-letters" type="button">Fechar as cartas</button>
+        <button class="button secondary" id="close-letters" type="button">fechar as cartas</button>
       </div>
     </section>
   </main>
@@ -247,11 +247,11 @@ Aproveite muito o seu dia! 🎉</p>
   <script>
     const SECRET_PASSWORD = '123';
     const letters = [
-      { title: 'Carta 1', content: '12312423' },
-      { title: 'Carta 2', content: '124235' },
-      { title: 'Carta 3', content: '2343' },
-      { title: 'Carta 4', content: '2353452' },
-      { title: 'Carta 5', content: '23890523478572384' }
+      { title: 'carta 1', content: '12312423' },
+      { title: 'carta 2', content: '124235' },
+      { title: 'carta 3', content: '2343' },
+      { title: 'carta 4', content: '2353452' },
+      { title: 'carta 5', content: '23890523478572384' }
     ];
 
     const form = document.getElementById('password-form');
@@ -283,7 +283,7 @@ Aproveite muito o seu dia! 🎉</p>
         passwordError.textContent = '';
         lettersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        passwordError.textContent = 'Senha incorreta. Você pode tentar novamente ou parar por aqui.';
+        passwordError.textContent = 'senha incorreta. voce pode tentar novamente ou parar por aqui.';
       }
     });
 
